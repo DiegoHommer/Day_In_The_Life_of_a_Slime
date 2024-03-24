@@ -1,7 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://qavyqjmdvphh"]
+[gd_scene load_steps=4 format=3 uid="uid://c1m8shg88v0qt"]
 
 [ext_resource type="PackedScene" uid="uid://d3imt2s6ikkdj" path="res://pc.tscn" id="1_gekrl"]
+[ext_resource type="PackedScene" uid="uid://j6yhilxiw5aj" path="res://enemy.tscn" id="3_14bhi"]
+[ext_resource type="PackedScene" uid="uid://7mmbb1qa3p7p" path="res://tree.tscn" id="4_w12li"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_gekrl")]
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1154.0
+offset_bottom = 644.0
+size_flags_horizontal = 0
+
+[node name="PC" parent="." instance=ExtResource("1_gekrl")]
+position = Vector2(2, 1)
+
+[node name="Enemy" parent="." instance=ExtResource("3_14bhi")]
+
+[node name="Trees" type="Node" parent="."]
+
+[node name="Tree" parent="Trees" instance=ExtResource("4_w12li")]
+position = Vector2(213, 164)
+
+[node name="Tree2" parent="Trees" instance=ExtResource("4_w12li")]
+position = Vector2(421, 378)
+
+[node name="Tree3" parent="Trees" instance=ExtResource("4_w12li")]
+position = Vector2(769, 266)
