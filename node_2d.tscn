@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://w8eui5kv5bud"]
+
+[ext_resource type="Texture2D" uid="uid://iaowgtf01m3j" path="res://icon.svg" id="1_v8v5q"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1154.0
+offset_bottom = 644.0
+size_flags_horizontal = 0
+texture = ExtResource("1_v8v5q")
