@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://w8eui5kv5bud"]
+[gd_scene load_steps=4 format=3 uid="uid://w8eui5kv5bud"]
 
 [ext_resource type="Texture2D" uid="uid://iaowgtf01m3j" path="res://icon.svg" id="1_v8v5q"]
+[ext_resource type="PackedScene" uid="uid://d3imt2s6ikkdj" path="res://pc.tscn" id="2_nq14h"]
+[ext_resource type="PackedScene" uid="uid://j6yhilxiw5aj" path="res://enemy.tscn" id="3_2pkwg"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -9,3 +11,7 @@ offset_right = 1154.0
 offset_bottom = 644.0
 size_flags_horizontal = 0
 texture = ExtResource("1_v8v5q")
+
+[node name="PC" parent="." instance=ExtResource("2_nq14h")]
+
+[node name="Enemy" parent="." instance=ExtResource("3_2pkwg")]
