@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://d3imt2s6ikkdj"]
+[gd_scene load_steps=2 format=3 uid="uid://d3imt2s6ikkdj"]
+
+[ext_resource type="Script" path="res://pc.gd" id="1_rbhyv"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_rbhyv")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 
