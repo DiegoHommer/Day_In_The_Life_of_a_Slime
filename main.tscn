@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1m8shg88v0qt"]
+[gd_scene load_steps=6 format=3 uid="uid://c1m8shg88v0qt"]
 
-[ext_resource type="PackedScene" uid="uid://d3imt2s6ikkdj" path="res://pc.tscn" id="1_gekrl"]
-[ext_resource type="PackedScene" uid="uid://j6yhilxiw5aj" path="res://enemy.tscn" id="3_14bhi"]
-[ext_resource type="PackedScene" uid="uid://7mmbb1qa3p7p" path="res://tree.tscn" id="4_w12li"]
+[ext_resource type="PackedScene" uid="uid://d3imt2s6ikkdj" path="res://scenes/pc.tscn" id="1_gekrl"]
+[ext_resource type="Script" path="res://game_manager.gd" id="1_le7ab"]
+[ext_resource type="PackedScene" uid="uid://j6yhilxiw5aj" path="res://scenes/enemy.tscn" id="3_14bhi"]
+[ext_resource type="PackedScene" uid="uid://7mmbb1qa3p7p" path="res://scenes/tree.tscn" id="4_w12li"]
+[ext_resource type="PackedScene" uid="uid://7xnnhbq4qci0" path="res://Trash.tscn" id="5_1mn4b"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -26,3 +28,21 @@ position = Vector2(421, 378)
 
 [node name="Tree3" parent="Trees" instance=ExtResource("4_w12li")]
 position = Vector2(769, 266)
+
+[node name="Trash" type="Node" parent="."]
+
+[node name="Trash" parent="Trash" instance=ExtResource("5_1mn4b")]
+position = Vector2(353, 95)
+
+[node name="Trash2" parent="Trash" instance=ExtResource("5_1mn4b")]
+position = Vector2(240, 372)
+
+[node name="Trash3" parent="Trash" instance=ExtResource("5_1mn4b")]
+position = Vector2(706, 190)
+
+[node name="Trash4" parent="Trash" instance=ExtResource("5_1mn4b")]
+position = Vector2(633, 445)
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_le7ab")

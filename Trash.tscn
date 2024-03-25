@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://7xnnhbq4qci0"]
+
+[ext_resource type="Script" path="res://trash.gd" id="1_x6lr5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g0165"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_x6lr5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g0165")
+debug_color = Color(0.176471, 0.176471, 0.176471, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-0.5, 5.96046e-08)
+scale = Vector2(2.03125, 2)
+color = Color(0.545098, 0.243137, 0.521569, 1)
+polygon = PackedVector2Array(-4.67692, -2.98023e-08, 0.246154, -5, 5.66154, 0, 0.246154, 5)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
