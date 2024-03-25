@@ -19,3 +19,9 @@ func _on_timer_timeout():
 		direction = Vector2(0,0)
 	velocity = speed * direction.normalized()
 	
+func get_bigger():
+	$Collision.scale.x += 1
+	$Collision.scale.y += 1
+	$Polygon2D.scale.x += 1
+	$Polygon2D.scale.y += 1
+
