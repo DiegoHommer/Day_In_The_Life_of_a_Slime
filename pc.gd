@@ -1,28 +1,50 @@
 extends CharacterBody2D
 
+var filho_scene = preload("res://filho.tscn")
+var filho = 0
+var filho_count = 0
+var parent = ""
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export var speed = 250.0
+var move = true
+var direction = Vector2(0,0)
+
+func _ready():
+	parent = get_parent() 
 
 
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
+	if move:
+		move_and_slide()
+		
+	if Input.is_action_just_pressed("ui_accept"):
+		fazer_filho()
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+func _on_timer_timeout():
+	#a cada 0.5 segundo ele muda entre parado e se mexendo (move = false ou move = true), e decide na direção
+	move = not move
+	direction = get_global_mouse_position() - position
+	
+	if direction.length() < 20: #se ele tiver muito perto do mouse ele fica parado
+		direction = Vector2(0,0)
+	direction = direction.normalized()
+	velocity = speed * direction
+	
+func fazer_filho():
+	#aqui é que ele cria os filhos como nodes embaixo do main
+	filho = filho_scene.instantiate()
+	parent.add_child(filho) 
+	
+	filho_count += 1
+	
+	#cada filho tem uma variável número pra saber qual filho que ele é
+	filho.numero = filho_count 
+	
+	#ele seta a posição do filho novo como sendo um pouco atrás do último filho
+	#aqui o parent.get_child(filho_count - 1) é o último filho
+	#acho que esse jeito de acessar os outros nodes não é muito "boa prática", e talvez deixe difícil de editar depois
+	#se alguém tiver um jeito melhor pode mudar
+	filho.position = parent.get_child(filho_count-1).position - 50*parent.get_child(filho_count-1).direction
 
-	move_and_slide()
