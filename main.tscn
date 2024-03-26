@@ -14,6 +14,7 @@ offset_bottom = 644.0
 size_flags_horizontal = 0
 
 [node name="PC" parent="." instance=ExtResource("1_gekrl")]
+unique_name_in_owner = true
 position = Vector2(2, 1)
 
 [node name="Enemy" parent="." instance=ExtResource("3_14bhi")]
