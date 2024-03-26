@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://3c4wokfy6mt4"]
+
+[ext_resource type="Script" path="res://scenes/escola.gd" id="1_1aksx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hnxb"]
+size = Vector2(152, 149)
+
+[node name="escola" type="Area2D"]
+script = ExtResource("1_1aksx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8hnxb")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-1, 0)
+color = Color(1, 0.988235, 0, 1)
+polygon = PackedVector2Array(-75, -76, 75, -76, 75, 76, -72, 75)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

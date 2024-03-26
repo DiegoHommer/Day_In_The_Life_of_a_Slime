@@ -72,6 +72,10 @@ func fazer_filho():
 		
 	#ele seta a posição do filho novo como sendo um pouco atrás do último filho
 	#aqui o parent.get_child(filho_count - 1) é o último filho
+
+	#acho que esse jeito de acessar os outros nodes não é muito "boa prática", e talvez deixe difícil de editar depois
+	#se alguém tiver um jeito melhor pode mudar
+	
 	filho.position = parent.get_child(filho_count-1).position - distancia*parent.get_child(filho_count-1).direction
 	
 	#diminui quando faz o filho
@@ -81,5 +85,21 @@ func fazer_filho():
 	$Polygon2D.scale.x = escala
 	$Polygon2D.scale.y = escala
 	
+func matar_filhos():
+# Percorre todos os filhos do nó pai (parent)
+	for child in parent.get_children():
+		var teste = child.get_name()
+		print(teste)
+		if child.get_name() != "PC":
+			child.queue_free()
+
+func obter_filho_count() -> int:
+	return filho_count
+
+func zerar_filho_count():
+	filho_count = 0
+
+	
+
 
 
