@@ -54,6 +54,18 @@ position = Vector2(633, 445)
 [node name="Trash5" parent="Trash" instance=ExtResource("5_1mn4b")]
 position = Vector2(272, 16)
 
+[node name="Trash6" parent="Trash" instance=ExtResource("5_1mn4b")]
+position = Vector2(448, 72)
+
+[node name="Trash7" parent="Trash" instance=ExtResource("5_1mn4b")]
+position = Vector2(274, 66)
+
+[node name="Trash8" parent="Trash" instance=ExtResource("5_1mn4b")]
+position = Vector2(319, 42)
+
+[node name="Trash9" parent="Trash" instance=ExtResource("5_1mn4b")]
+position = Vector2(388, 53)
+
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_le7ab")
@@ -66,7 +78,7 @@ script = ExtResource("6_fedkr")
 [node name="Panel" type="Panel" parent="UI"]
 offset_left = 28.0
 offset_top = 25.0
-offset_right = 119.0
+offset_right = 191.0
 offset_bottom = 64.0
 
 [node name="QtdFilhos" type="Label" parent="UI/Panel"]
@@ -75,6 +87,30 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -52.0
+offset_right = 194.0
+offset_bottom = -14.0
+grow_vertical = 0
+
+[node name="QtdLixo" type="Label" parent="UI/Panel2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
