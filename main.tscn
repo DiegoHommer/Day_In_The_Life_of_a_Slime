@@ -47,6 +47,9 @@ position = Vector2(706, 190)
 [node name="Trash4" parent="Trash" instance=ExtResource("5_1mn4b")]
 position = Vector2(633, 445)
 
+[node name="Trash5" parent="Trash" instance=ExtResource("5_1mn4b")]
+position = Vector2(272, 16)
+
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_le7ab")
