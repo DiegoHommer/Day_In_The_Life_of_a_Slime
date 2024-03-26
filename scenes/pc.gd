@@ -56,5 +56,20 @@ func fazer_filho():
 	#acho que esse jeito de acessar os outros nodes não é muito "boa prática", e talvez deixe difícil de editar depois
 	#se alguém tiver um jeito melhor pode mudar
 	filho.position = parent.get_child(filho_count-1).position - 50*parent.get_child(filho_count-1).direction
+	
+	
+func matar_filhos():
+# Percorre todos os filhos do nó pai (parent)
+	for child in parent.get_children():
+		var teste = child.get_name()
+		print(teste)
+		if child.get_name() != "PC":
+			child.queue_free()
+
+func obter_filho_count() -> int:
+	return filho_count
+
+func zerar_filho_count():
+	filho_count = 0
 
 
