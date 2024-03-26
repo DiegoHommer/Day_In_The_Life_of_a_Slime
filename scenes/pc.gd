@@ -7,7 +7,7 @@ var move = true
 var direction = Vector2(0,0)
 
 #tamanho------------------------------------------------------------------------------
-const SIZE_CHANGE = 0.1
+const SIZE_CHANGE = 0.2
 var escala = 1
 #esse parâmetro controla o quão forte é a desaceleração dele quando ele cresce
 #se é 1, ele fica duas vezes mais lento quando tá duas vezes maior. Botei 0.5 porque parecia melhor, mas dá pra mudar
@@ -20,6 +20,9 @@ const LIXO_POR_FILHO = 5
 var parent = ""
 var tempo = 0
 
+#lixo-------------------------------------------------------------------------------
+#queremos 
+@onready var game_manager = %GameManager
 
 func _ready():
 	parent = get_parent() 
@@ -31,8 +34,10 @@ func _physics_process(delta):
 		move_and_slide()
 		
 	#botei que ele pode fazer um filho a cada 5 lixos comidos, mas dá pra mudar isso
-	if Input.is_action_just_pressed("ui_accept") and escala >= 1+SIZE_CHANGE*LIXO_POR_FILHO:
+	#(mudei a condição para estar atrelado aos lixos em si, não a escala)
+	if Input.is_action_just_pressed("ui_accept") and game_manager.get_trash() > LIXO_POR_FILHO:
 		fazer_filho()
+		game_manager.att_trash(LIXO_POR_FILHO)
 
 func _on_timer_timeout():
 	#a cada 0.5 segundo ele muda entre parado e se mexendo (move = false ou move = true), e decide na direção
@@ -49,7 +54,7 @@ func get_bigger():
 	#então tava tendo situações que comia 15 lixos mas só conseguia fazer 2 filhos
 	escala = round(10*(escala + SIZE_CHANGE))/10
 	$Collision.scale.x = escala
-	$Collision.scale.y =escala
+	$Collision.scale.y = escala
 	$Polygon2D.scale.x = escala
 	$Polygon2D.scale.y = escala
 	
