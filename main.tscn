@@ -1,21 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1m8shg88v0qt"]
+[gd_scene load_steps=7 format=3 uid="uid://c1m8shg88v0qt"]
 
 [ext_resource type="PackedScene" uid="uid://d3imt2s6ikkdj" path="res://scenes/pc.tscn" id="1_gekrl"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_le7ab"]
 [ext_resource type="PackedScene" uid="uid://j6yhilxiw5aj" path="res://scenes/enemy.tscn" id="3_14bhi"]
 [ext_resource type="PackedScene" uid="uid://7mmbb1qa3p7p" path="res://scenes/tree.tscn" id="4_w12li"]
 [ext_resource type="PackedScene" uid="uid://7xnnhbq4qci0" path="res://Trash.tscn" id="5_1mn4b"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="6_fedkr"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Familia" type="Node2D" parent="."]
+
+[node name="PC" parent="Familia" instance=ExtResource("1_gekrl")]
+unique_name_in_owner = true
+position = Vector2(2, 1)
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1154.0
 offset_bottom = 644.0
 size_flags_horizontal = 0
-
-[node name="PC" parent="." instance=ExtResource("1_gekrl")]
-unique_name_in_owner = true
-position = Vector2(2, 1)
 
 [node name="Enemy" parent="." instance=ExtResource("3_14bhi")]
 
@@ -47,3 +50,6 @@ position = Vector2(633, 445)
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_le7ab")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("6_fedkr")
