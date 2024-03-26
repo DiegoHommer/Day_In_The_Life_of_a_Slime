@@ -5,6 +5,7 @@ extends CharacterBody2D
 var move = true
 var direction = Vector2(0,0)
 
+
 var filho_scene = preload("res://scenes/filho.tscn")
 var filho = 0
 var filho_count = 0
@@ -14,8 +15,12 @@ var tempo = 0
 const SIZE_CHANGE = 0.5
 
 
+var pc_name = ""
+
+
 func _ready():
 	parent = get_parent() 
+
 
 func _physics_process(delta):
 	if move:
@@ -23,6 +28,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("ui_accept"):
 		fazer_filho()
+			
 
 func _on_timer_timeout():
 	#a cada 0.5 segundo ele muda entre parado e se mexendo (move = false ou move = true), e decide na direção
@@ -57,4 +63,16 @@ func fazer_filho():
 	#se alguém tiver um jeito melhor pode mudar
 	filho.position = parent.get_child(filho_count-1).position - 50*parent.get_child(filho_count-1).direction
 
+func matar_filhos():
+	# Percorre todos os filhos do nó pai (parent)
+	for child in parent.get_children():
+		var teste = child.get_name()
+		print(teste)
+		if child.get_name() != "PC":
+			child.queue_free()
 
+func obter_filho_count() -> int:
+	return filho_count
+
+func zerar_filho_count():
+	filho_count = 0
