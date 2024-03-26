@@ -5,11 +5,13 @@ extends CharacterBody2D
 var move = true
 var direction = Vector2(0,0)
 
-var filho_scene = preload("res://filho.tscn")
+var filho_scene = preload("res://scenes/filho.tscn")
 var filho = 0
 var filho_count = 0
 var parent = ""
 var tempo = 0
+
+const SIZE_CHANGE = 0.5
 
 
 func _ready():
@@ -33,10 +35,10 @@ func _on_timer_timeout():
 	velocity = speed * direction
 	
 func get_bigger():
-	$Collision.scale.x += 1
-	$Collision.scale.y += 1
-	$Polygon2D.scale.x += 1
-	$Polygon2D.scale.y += 1
+	$Collision.scale.x += SIZE_CHANGE
+	$Collision.scale.y += SIZE_CHANGE
+	$Polygon2D.scale.x += SIZE_CHANGE
+	$Polygon2D.scale.y += SIZE_CHANGE
 
 	
 func fazer_filho():

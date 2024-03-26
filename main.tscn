@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://game_manager.gd" id="1_le7ab"]
 [ext_resource type="PackedScene" uid="uid://j6yhilxiw5aj" path="res://scenes/enemy.tscn" id="3_14bhi"]
 [ext_resource type="PackedScene" uid="uid://7mmbb1qa3p7p" path="res://scenes/tree.tscn" id="4_w12li"]
-[ext_resource type="PackedScene" uid="uid://7xnnhbq4qci0" path="res://Trash.tscn" id="5_1mn4b"]
+[ext_resource type="PackedScene" uid="uid://7xnnhbq4qci0" path="res://scenes/Trash.tscn" id="5_1mn4b"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="6_fedkr"]
 
 [node name="Node2D" type="Node2D"]
