@@ -24,8 +24,10 @@ var tempo = 0
 #queremos 
 @onready var game_manager = %GameManager
 
+
 func _ready():
 	parent = get_parent() 
+
 
 func _physics_process(delta):
 	speed = BASE_SPEED/(escala**SLOW_DOWN) #muda a velocidade pelo tamanho
@@ -35,9 +37,10 @@ func _physics_process(delta):
 		
 	#botei que ele pode fazer um filho a cada 5 lixos comidos, mas dá pra mudar isso
 	#(mudei a condição para estar atrelado aos lixos em si, não a escala)
-	if Input.is_action_just_pressed("ui_accept") and game_manager.get_trash() > LIXO_POR_FILHO:
+	if Input.is_action_just_pressed("ui_accept") and game_manager.get_trash() >= LIXO_POR_FILHO:
 		fazer_filho()
 		game_manager.att_trash(LIXO_POR_FILHO)
+
 
 func _on_timer_timeout():
 	#a cada 0.5 segundo ele muda entre parado e se mexendo (move = false ou move = true), e decide na direção
@@ -48,16 +51,23 @@ func _on_timer_timeout():
 		direction = Vector2(0,0)
 	direction = direction.normalized()
 	velocity = speed * direction
-	
-func get_bigger():
+
+
+# Função agora é generica e recebe o booleano *aumenta* para definir se diminui ou aumenta o tamanho do PC
+func change_size(aumenta):
 	#tive que botar esse round porque o erro de float tava acumulando 
 	#então tava tendo situações que comia 15 lixos mas só conseguia fazer 2 filhos
-	escala = round(10*(escala + SIZE_CHANGE))/10
+	if (aumenta):
+		escala = round(10*(escala + SIZE_CHANGE))/10
+	else:
+		escala = round(10*(escala - SIZE_CHANGE*game_manager.get_lost_trash()))/10
+		
 	$Collision.scale.x = escala
 	$Collision.scale.y = escala
 	$Polygon2D.scale.x = escala
 	$Polygon2D.scale.y = escala
-	
+
+
 func fazer_filho():
 	var filho = 0
 	
@@ -69,6 +79,7 @@ func fazer_filho():
 	
 	#cada filho tem uma variável número pra saber qual filho que ele é
 	filho.numero = filho_count 
+	filho.name = "Filho"
 	
 	#essa distância é o espaço entre o filho anterior e o filho que ele cria
 	var distancia = 30
@@ -85,26 +96,29 @@ func fazer_filho():
 	
 	#diminui quando faz o filho
 	escala -=SIZE_CHANGE*LIXO_POR_FILHO
-	$Collision.scale.x =escala
+	$Collision.scale.x = escala
 	$Collision.scale.y = escala
 	$Polygon2D.scale.x = escala
 	$Polygon2D.scale.y = escala
-	
+
+
 func matar_filhos():
 # Percorre todos os filhos do nó pai (parent)
 	for child in parent.get_children():
 		var teste = child.get_name()
-		print(teste)
 		if child.get_name() != "PC":
 			child.queue_free()
+
 
 func obter_filho_count() -> int:
 	return filho_count
 
+
 func zerar_filho_count():
 	filho_count = 0
 
-	
 
-
-
+# Quando imunidade do player acaba, retorna a "sprite" para sua versão original
+@onready var player_sprite = %PC/Polygon2D
+func _on_immunity_timer_timeout():
+	player_sprite.set_color(Color(255,255,255,255))

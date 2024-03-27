@@ -6,20 +6,24 @@
 size = Vector2(32, 32)
 
 [node name="PC" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_rbhyv")
-
-[node name="Hitbox" type="CollisionShape2D" parent="."]
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_odcxp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="ImmunityTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ImmunityTimer" to="." method="_on_immunity_timer_timeout"]

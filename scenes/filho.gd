@@ -32,3 +32,6 @@ func _physics_process(delta):
 		
 
 
+func get_number() -> int:
+	return numero
+
