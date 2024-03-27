@@ -1,9 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8tt2hkrilj5k"]
+[gd_scene load_steps=3 format=3 uid="uid://b8tt2hkrilj5k"]
 
 [ext_resource type="Script" path="res://scenes/filho.gd" id="1_j64pl"]
 
-[node name="Node2D" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0px37"]
+size = Vector2(11.3137, 11.3137)
+
+[node name="Filho" type="CharacterBody2D"]
+collision_layer = 4
+safe_margin = 0.1
 script = ExtResource("1_j64pl")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(0, -8, -8, 0, 0, 8, 8, 0)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+rotation = 0.785398
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_0px37")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)

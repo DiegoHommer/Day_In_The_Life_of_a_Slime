@@ -5,7 +5,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hnxb"]
 size = Vector2(152, 149)
 
-[node name="escola" type="Area2D"]
+[node name="Escola" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_1aksx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

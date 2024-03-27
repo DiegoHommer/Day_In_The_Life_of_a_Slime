@@ -5,12 +5,27 @@ extends Node
 
 
 var trash = 0
+var lost_trash = 0
 var filhos_in_school = 0
+
+func game_over():
+	print("morreu :(")
 
 # Função de absorção do lixo
 func add_trash():
 	trash += 1
 	qtd_lixo.text = "lixos: " + str(trash)
+	
+# Função de perda do lixo após player tomar hit
+func lose_trash():
+	if (trash > 0):
+		var aux = trash
+		trash = round(trash/2)
+		lost_trash = aux - trash
+		qtd_lixo.text = "lixos: " + str(trash)
+	else:
+		lost_trash = 0
+		game_over()
 
 # Função de atualização do lixo, quando fizer filho, tem que diminuir a qtd de
 # lixo que possui 
@@ -20,6 +35,9 @@ func att_trash(lixo_por_filho):
 	
 func get_trash() -> int:
 	return trash
+	
+func get_lost_trash() -> int:
+	return lost_trash
 
 # Função de "colocar" os filhos na escola
 func go_to_school():
@@ -31,4 +49,5 @@ func go_to_school():
 	pc.matar_filhos()
 	
 	qtd_filhos.text = "escola: " + str(filhos_in_school)
+
 
