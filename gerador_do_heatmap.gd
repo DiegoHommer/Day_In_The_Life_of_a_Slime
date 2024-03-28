@@ -2,6 +2,8 @@ extends Node
 
 const HEATMAP_SIZE = 16
 const DIFICULDADE = 2
+const TOTAL_LIXO = 120
+var lixo_scene = preload("res://scenes/trash.tscn")
 var area_scene = preload("res://scenes/areas_mapa.tscn")
 var areas = []
 
@@ -14,14 +16,14 @@ func _ready():
 			areas.append([])
 			areas[i].append(area_scene.instantiate())
 			add_child(areas[i][j])
-			areas[i][j].position = Vector2(300*(i-HEATMAP_SIZE/2), 300*(j-HEATMAP_SIZE/2))
+			areas[i][j].position = Vector2(320*(i-HEATMAP_SIZE/2), 320*(j-HEATMAP_SIZE/2))
 			areas[i][j].level = 0
 			
-	var A_x = randi_range(round(HEATMAP_SIZE/8),round(HEATMAP_SIZE/3))
-	var A_y = randi_range(round(HEATMAP_SIZE/8), round(HEATMAP_SIZE/3))
+	var A_x = randi_range(2,5)
+	var A_y = randi_range(2, 5)
 
-	var B_x = randi_range(round(2*HEATMAP_SIZE/3),round(7*HEATMAP_SIZE/8))
-	var B_y = randi_range(round(2*HEATMAP_SIZE/4), round(7*HEATMAP_SIZE/8))
+	var B_x = randi_range(11,14)
+	var B_y = randi_range(11,14)
 
 	cidade(A_x, A_y)
 
@@ -35,7 +37,36 @@ func _ready():
 		urbanização()
 	ajuste()
 		
-
+	#garante que os cantos do spawn e da cidade são seguros
+	for i in 3:
+		for j in 3:
+			areas[i][HEATMAP_SIZE - 1 - j].level = 0
+			areas[HEATMAP_SIZE - i - 1][j].level = 0
+			
+		
+	#fazer os lixos------------------------------------------------------------	
+	var quantos_lixos = 0
+	
+	#primeiro ele garante que cada quadrado vermelho tem pelo menos 1 lixo
+	for i in HEATMAP_SIZE:
+		for j in HEATMAP_SIZE:
+			if areas[i][j].level == 3:
+				var lixo = lixo_scene.instantiate()
+				add_child(lixo) 
+				lixo.position = areas[i][j].position + Vector2(randi_range(0,320), randi_range(0,320))
+				quantos_lixos +=1
+	
+	#o resto é mais aleatório
+	while(quantos_lixos < TOTAL_LIXO):
+		#sorteia uma posição
+		var rand_x = randi_range(0,HEATMAP_SIZE - 1)
+		var rand_y = randi_range(0,HEATMAP_SIZE - 1)
+		#a chance de criar um lixo na posição sorteada depende do heat da área da posição
+		if (randf_range(0,1)*(areas[rand_x][rand_y].level+1)>0.95):
+			var lixo = lixo_scene.instantiate()
+			add_child(lixo) 
+			lixo.position = areas[rand_x][rand_y].position + Vector2(randi_range(0,320), randi_range(0,320))
+			quantos_lixos +=1
 		
 	
 

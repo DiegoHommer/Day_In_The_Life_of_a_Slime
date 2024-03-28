@@ -44,30 +44,6 @@ position = Vector2(769, 266)
 
 [node name="Trash" type="Node" parent="."]
 
-[node name="Trash" parent="Trash" instance=ExtResource("5_1mn4b")]
-position = Vector2(353, 95)
-
-[node name="Trash2" parent="Trash" instance=ExtResource("5_1mn4b")]
-position = Vector2(240, 372)
-
-[node name="Trash3" parent="Trash" instance=ExtResource("5_1mn4b")]
-position = Vector2(706, 190)
-
-[node name="Trash4" parent="Trash" instance=ExtResource("5_1mn4b")]
-position = Vector2(633, 445)
-
-[node name="Trash5" parent="Trash" instance=ExtResource("5_1mn4b")]
-position = Vector2(272, 16)
-
-[node name="Trash6" parent="Trash" instance=ExtResource("5_1mn4b")]
-position = Vector2(448, 72)
-
-[node name="Trash7" parent="Trash" instance=ExtResource("5_1mn4b")]
-position = Vector2(274, 66)
-
-[node name="Trash8" parent="Trash" instance=ExtResource("5_1mn4b")]
-position = Vector2(319, 42)
-
 [node name="Trash9" parent="Trash" instance=ExtResource("5_1mn4b")]
 position = Vector2(388, 53)
 
