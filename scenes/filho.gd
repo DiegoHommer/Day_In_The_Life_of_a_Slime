@@ -27,11 +27,13 @@ func _physics_process(delta):
 		#eu tentei fazer ele seguir diretamente o filho anterior, mas daí eles se amontoavam
 		direction = (parent.get_child(numero-1).position-30*mult_dist*parent.get_child(numero-1).direction) - position
 		direction = direction.normalized()
-		velocity = speed*direction
-		move_and_slide()
 		
+		velocity = pc.dad_speed * direction
+		
+		move_and_slide()
 
 
 func get_number() -> int:
 	return numero
+
 
