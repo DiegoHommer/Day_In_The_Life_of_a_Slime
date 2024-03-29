@@ -36,7 +36,7 @@ func _ready():
 	
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	speed = BASE_SPEED/(escala**SLOW_DOWN) #muda a velocidade pelo tamanho
 	
 	if Input.is_action_just_pressed("ir_para_menu"):
@@ -81,7 +81,7 @@ func change_size(aumenta):
 		if (aumenta):
 			escala = round(10*(escala + SIZE_CHANGE))/10
 		else:
-			escala = round(10*(escala - SIZE_CHANGE*game_manager.get_lost_trash()))/10
+			escala = max(round(10*(escala - SIZE_CHANGE*game_manager.get_lost_trash()))/10,1)
 			
 		$Collision.scale.x = escala
 		$Collision.scale.y = escala
@@ -139,6 +139,10 @@ func obter_lixo_por_filho() -> int:
 
 func zerar_filho_count():
 	filho_count = 0
+
+func subtrair_filho_count(mortos):
+	filho_count -= mortos
+	print(filho_count)
 
 
 # Quando imunidade do player acaba, retorna a "sprite" para sua versão original

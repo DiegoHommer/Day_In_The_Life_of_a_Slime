@@ -21,7 +21,7 @@ func add_trash():
 func lose_trash():
 	if (trash > 0):
 		var aux = trash
-		trash = round(trash/2)
+		trash = floor(float(trash)/2)
 		lost_trash = aux - trash
 		#coloca na label (%QtdLixo) a quantidade de lixos
 		qtd_lixo.text = "lixos: " + str(trash)
