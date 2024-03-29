@@ -13,7 +13,7 @@ func _ready():
 	parent = get_parent() #"parent" aqui é o parent node (que é o main por enquanto) e não o pc
 	pc = parent.get_child(0)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	move = pc.move
 	speed = pc.speed
 	

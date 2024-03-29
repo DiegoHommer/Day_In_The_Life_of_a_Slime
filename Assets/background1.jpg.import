@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7kg61wnata5l"
-path="res://.godot/imported/Captura_de_tela_2024-03-28_222525-removebg-preview (1).png-d05efc481d9c7a9bf498a897cf7fac7b.ctex"
+uid="uid://cpu6puvr2n6rs"
+path="res://.godot/imported/background1.jpg-c17d9487edc993fcdea01c30b73c6e58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Captura_de_tela_2024-03-28_222525-removebg-preview (1).png"
-dest_files=["res://.godot/imported/Captura_de_tela_2024-03-28_222525-removebg-preview (1).png-d05efc481d9c7a9bf498a897cf7fac7b.ctex"]
+source_file="res://Assets/background1.jpg"
+dest_files=["res://.godot/imported/background1.jpg-c17d9487edc993fcdea01c30b73c6e58.ctex"]
 
 [params]
 
