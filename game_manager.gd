@@ -14,6 +14,7 @@ func game_over():
 # Função de absorção do lixo
 func add_trash():
 	trash += 1
+	#coloca na label (%QtdLixo) a quantidade de lixos
 	qtd_lixo.text = "lixos: " + str(trash)
 	
 # Função de perda do lixo após player tomar hit
@@ -22,6 +23,7 @@ func lose_trash():
 		var aux = trash
 		trash = round(trash/2)
 		lost_trash = aux - trash
+		#coloca na label (%QtdLixo) a quantidade de lixos
 		qtd_lixo.text = "lixos: " + str(trash)
 	else:
 		lost_trash = 0
@@ -31,6 +33,7 @@ func lose_trash():
 # lixo que possui 
 func att_trash(lixo_por_filho):
 	trash -= lixo_por_filho
+	#coloca na label (%QtdLixo) a quantidade de lixos
 	qtd_lixo.text = "lixos: " + str(trash)
 	
 func get_trash() -> int:
@@ -47,7 +50,7 @@ func go_to_school():
 	pc.zerar_filho_count()
 	#mata os filhos atuais do pc
 	pc.matar_filhos()
-	
+	#coloca na label (%QtdFilhos) a quantidade de filhos na escola
 	qtd_filhos.text = "escola: " + str(filhos_in_school)
 
 
