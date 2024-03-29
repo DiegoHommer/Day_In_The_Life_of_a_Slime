@@ -22,9 +22,12 @@ func _on_body_entered(body):
 			
 	# Se o filho entra em contato com o inimigo, filho e todos os irmãos que estão seguindo ele são deletados
 	elif(body.name == "Filho"):
+		var mortos = 1
 		for brother in body.parent.get_children():
 			if(brother.name != "PC"):
 				if (brother.get_number() > body.get_number()):
+					mortos += 1
 					body.parent.remove_child(brother)
 					brother.queue_free() 
+		pc.subtrair_filho_count(mortos)
 		body.queue_free()

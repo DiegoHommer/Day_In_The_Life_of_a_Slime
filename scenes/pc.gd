@@ -140,6 +140,10 @@ func obter_lixo_por_filho() -> int:
 func zerar_filho_count():
 	filho_count = 0
 
+func subtrair_filho_count(mortos):
+	filho_count -= mortos
+	print(filho_count)
+
 
 # Quando imunidade do player acaba, retorna a "sprite" para sua versão original
 @onready var player_sprite = %PC/Polygon2D
