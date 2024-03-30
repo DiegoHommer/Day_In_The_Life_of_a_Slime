@@ -26,7 +26,7 @@ var tempo = 0
 
 
 func _ready():
-	position = Vector2(-1800,1800)
+	position = Vector2(-2000,2000)
 	parent = get_parent() 
 
 

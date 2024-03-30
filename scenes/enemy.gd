@@ -4,7 +4,13 @@ extends Area2D
 @onready var immunity_timer = %PC/ImmunityTimer
 @onready var player_sprite = %PC/Polygon2D
 
-
+func _ready():
+	if get_parent().has_method("gerar_inimigos"):
+		owner = get_parent().owner
+	game_manager = %GameManager
+	pc = %PC
+	immunity_timer = %PC/ImmunityTimer
+	player_sprite = %PC/Polygon2D
 # Função de ataque contra o player
 func attack():
 	game_manager.lose_trash() # PC perde metade do lixo
