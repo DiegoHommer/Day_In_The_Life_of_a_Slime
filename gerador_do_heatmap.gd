@@ -58,9 +58,9 @@ func _ready():
 
 func cidade(x, y):
 	areas[x][y].level = 6
-	areas[x+1][y].level = 6	
-	areas[x][y+1].level = 6	
-	areas[x+1][y+1].level = 6	
+	areas[x+1][y].level = 6
+	areas[x][y+1].level = 6
+	areas[x+1][y+1].level = 6
 	
 func urbanização():
 	
