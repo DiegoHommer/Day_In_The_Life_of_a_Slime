@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://dnronrdvg66lm"]
-
-[node name="Node2D" type="Node2D"]
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(1, 0.905882, 0.321569, 1)
-polygon = PackedVector2Array(0, 0, -24, 8, -8, 24)
