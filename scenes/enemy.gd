@@ -1,8 +1,8 @@
 extends CharacterBody2D
-@onready var game_manager = %GameManager
-@onready var pc = %PC
-@onready var immunity_timer = %PC/ImmunityTimer
-@onready var player_sprite = %PC/Polygon2D
+var game_manager = ""
+var pc = ""
+var immunity_timer = ""
+var player_sprite = ""
 
 const X = 50
 const Y = 50

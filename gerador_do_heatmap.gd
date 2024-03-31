@@ -23,7 +23,7 @@ func _ready():
 			areas.append([])
 			areas[i].append(area_scene.instantiate())
 			add_child(areas[i][j])
-			areas[i][j].position = Vector2(320*(i-HEATMAP_SIZE/2), 320*(j-HEATMAP_SIZE/2))
+			areas[i][j].position = Vector2(320*(i-float(HEATMAP_SIZE)/2), 320*(j-float(HEATMAP_SIZE)/2))
 			areas[i][j].level = 0
 			
 	var A_x = randi_range(1,4)
