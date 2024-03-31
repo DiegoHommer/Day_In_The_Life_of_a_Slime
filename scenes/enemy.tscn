@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://j6yhilxiw5aj"]
+[gd_scene load_steps=4 format=3 uid="uid://j6yhilxiw5aj"]
 
-[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_7wegl"]
+[ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_7wegl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hv04y"]
 size = Vector2(32, 32)
 
-[node name="Enemy" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2feb2"]
+size = Vector2(32, 32)
+
+[node name="Enemy" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 7
+motion_mode = 1
 script = ExtResource("1_7wegl")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -19,4 +22,16 @@ shape = SubResource("RectangleShape2D_hv04y")
 color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 7
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2feb2")
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
