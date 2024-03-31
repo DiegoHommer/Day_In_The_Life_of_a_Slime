@@ -9,6 +9,15 @@ const Y = 50
 var rand_float = 0
 var move = true
 
+func _ready():
+	if get_parent().has_method("gerar_inimigos"):
+		owner = get_parent().owner
+	game_manager = %GameManager
+	pc = %PC
+	immunity_timer = %PC/ImmunityTimer
+	player_sprite = %PC/Polygon2D
+  
+
 
 func _on_dash_timer_timeout():
 	#a cada 0.5 segundo ele muda entre parado e se mexendo (move = false ou move = true), e decide na direção
@@ -39,6 +48,7 @@ func attack():
 	pc.change_size(false) # PC diminui em tamanho
 	player_sprite.set_color(Color(0,0,0,255)) # PC muda de sprite
 	immunity_timer.start() # PC recebe tempo de imunidade
+
 
 
 # Função para quando player/filho toca no hitbox do inimigo

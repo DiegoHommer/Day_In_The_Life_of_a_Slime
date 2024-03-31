@@ -19,7 +19,7 @@ shape = SubResource("RectangleShape2D_hv04y")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0.709804, 0, 0, 1)
+color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [node name="Area2D" type="Area2D" parent="."]
