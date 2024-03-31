@@ -26,7 +26,7 @@ const SLOW_DOWN = 0.5
 #filhos-------------------------------------------------------------------------------
 var filho_scene = preload("res://scenes/filho.tscn")
 var filho_count = 0
-const LIXO_POR_FILHO = 3
+const LIXO_POR_FILHO = 1
 var parent = ""
 var tempo = 0
 
@@ -48,10 +48,9 @@ func _physics_process(_delta):
 	
 	if move:
 		move_and_slide()
-		
-	#botei que ele pode fazer um filho a cada 5 lixos comidos, mas dá pra mudar isso
+			
 	#(mudei a condição para estar atrelado aos lixos em si, não a escala)
-	if Input.is_action_just_pressed("dash_filho") and game_manager.get_trash() >= LIXO_POR_FILHO:
+	if Input.is_action_just_pressed("dash_filho") and game_manager.get_trash() >= LIXO_POR_FILHO and game_manager.going_school == false:
 		fazer_filho()
 		game_manager.att_trash(LIXO_POR_FILHO)
 		
@@ -75,9 +74,17 @@ func _on_timer_timeout():
 			velocity = speed * direction
 			dad_speed = speed
 	
+	
+	if game_manager.filhos_in_school == 0:
+				game_manager.leaving_school = false
 
+	if game_manager.leaving_school:
+		print("tô fazendo filho")
+		fazer_filho()
+		game_manager.att_school(false) #false pq tá diminuindo
 
 # Função agora é generica e recebe o booleano *aumenta* para definir se diminui ou aumenta o tamanho do PC
+#arrumar para não ser quando for divisivel por 3. fazer caso geral pra quando for diminuir tbmm
 func change_size(aumenta):
 	if (game_manager.get_trash() % LIXO_POR_FILHO) == 0:
 		#tive que botar esse round porque o erro de float tava acumulando 
@@ -94,9 +101,11 @@ func change_size(aumenta):
 
 
 func fazer_filho():
+
 	var filho = 0
 	#acabou de fazer um filho, ent no próximo burst irá ser mais veloz
-	is_dad = true
+	if game_manager.leaving_school == false:
+		is_dad = true
 	#aqui é que ele cria os filhos como nodes embaixo do main
 	filho = filho_scene.instantiate()
 	parent.add_child(filho) 
@@ -121,19 +130,22 @@ func fazer_filho():
 	filho.position = parent.get_child(filho_count-1).position - distancia*parent.get_child(filho_count-1).direction
 	
 	#diminui quando faz o filho
-	escala -=SIZE_CHANGE
-	$Collision.scale.x = escala
-	$Collision.scale.y = escala
-	$Polygon2D.scale.x = escala
-	$Polygon2D.scale.y = escala
+	if game_manager.leaving_school == false:
+		escala -=SIZE_CHANGE
+		$Collision.scale.x = escala
+		$Collision.scale.y = escala
+		$Polygon2D.scale.x = escala
+		$Polygon2D.scale.y = escala
 
 
-func matar_filhos():
+
+func matar_filho(num):
 # Percorre todos os filhos do nó pai (parent)
 	for child in parent.get_children():
 		if child.get_name() != "PC":
-			child.queue_free()
-
+			if child.get_number() == num:
+				child.queue_free()
+				print("dei free em " + child.get_name())
 
 func obter_filho_count() -> int:
 	return filho_count
@@ -154,3 +166,5 @@ func subtrair_filho_count(mortos):
 
 func _on_immunity_timer_timeout():
 	player_sprite.set_color(Color(255,255,255,255))
+
+

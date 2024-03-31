@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1m8shg88v0qt"]
+[gd_scene load_steps=9 format=3 uid="uid://c1m8shg88v0qt"]
 
 [ext_resource type="PackedScene" uid="uid://d3imt2s6ikkdj" path="res://scenes/pc.tscn" id="1_gekrl"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_le7ab"]
 [ext_resource type="PackedScene" uid="uid://3c4wokfy6mt4" path="res://scenes/escola.tscn" id="2_5hqxw"]
 [ext_resource type="PackedScene" uid="uid://j6yhilxiw5aj" path="res://scenes/enemy.tscn" id="3_14bhi"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="6_fedkr"]
+[ext_resource type="Script" path="res://DiaTimer.gd" id="7_hi8dc"]
 [ext_resource type="Script" path="res://gerador_do_heatmap.gd" id="8_p2y4t"]
+
+[sub_resource type="Theme" id="Theme_qo2e7"]
 
 [node name="main_game" type="Node2D"]
 
@@ -80,3 +83,42 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DiaTimer" type="Node" parent="UI"]
+script = ExtResource("7_hi8dc")
+
+[node name="Panel3" type="Panel" parent="UI/DiaTimer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -193.0
+offset_top = -57.0
+offset_right = -18.0
+offset_bottom = -19.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_qo2e7")
+
+[node name="Tempo" type="Label" parent="UI/DiaTimer/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TempoDia" type="Timer" parent="UI/DiaTimer/Panel3"]
+wait_time = 80.0
+one_shot = true
+
+[node name="VoltaCasa" type="Timer" parent="UI/DiaTimer/Panel3"]
+wait_time = 150.0
+one_shot = true
+
+[connection signal="timeout" from="UI/DiaTimer/Panel3/TempoDia" to="UI/DiaTimer" method="_on_tempo_dia_timeout"]

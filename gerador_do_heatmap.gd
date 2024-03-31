@@ -44,7 +44,7 @@ func _ready():
 		urbanização()
 	ajuste()
 		
-	#garante que os cantos do spawn e da cidade são seguros
+	#garante que os cantos do spawn e da escola são seguros
 	for i in 3:
 		for j in 3:
 			areas[i][HEATMAP_SIZE - 1 - j].level = 0

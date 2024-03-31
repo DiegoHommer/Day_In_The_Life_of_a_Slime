@@ -3,10 +3,14 @@ extends Node
 @onready var qtd_filhos = %QtdFilhos
 @onready var qtd_lixo = %QtdLixo
 
-
 var trash = 0
 var lost_trash = 0
 var filhos_in_school = 0
+
+#variável que mostra se os filhos estão indo para escola ou não
+var going_school = false
+#variável que mostra se os filhos estão saindo da escola ou não
+var leaving_school = false
 
 func game_over():
 	print("morreu :(")
@@ -43,13 +47,12 @@ func get_lost_trash() -> int:
 	return lost_trash
 
 # Função de "colocar" os filhos na escola
-func go_to_school():
+func att_school(aumentou):
 #atualiza a quantidade de filhos na escola
-	filhos_in_school += pc.obter_filho_count()
-	#zera a quantidade de filhos do pc
-	pc.zerar_filho_count()
-	#mata os filhos atuais do pc
-	pc.matar_filhos()
+	if aumentou:
+		filhos_in_school += 1
+	else:
+		filhos_in_school -= 1
 	#coloca na label (%QtdFilhos) a quantidade de filhos na escola
 	qtd_filhos.text = "escola: " + str(filhos_in_school)
 
