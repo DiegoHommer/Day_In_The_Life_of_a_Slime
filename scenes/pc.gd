@@ -47,7 +47,6 @@ func _physics_process(_delta):
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	
 	if move:
-		
 		move_and_slide()
 		
 	#botei que ele pode fazer um filho a cada 5 lixos comidos, mas dá pra mudar isso
