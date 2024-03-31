@@ -1,7 +1,7 @@
 extends Area2D
 
 var level = 0
-var area = get_child(0)
+@onready var area = get_child(0)
 var color = Color()
 var green = Color(0,1,0,0.5)
 var yellow = Color(0.9,0.9,0.2,0.5)

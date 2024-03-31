@@ -13,6 +13,9 @@ var is_dad = false
 
 var dad_speed = 0
 
+var stick_left = 0
+var stick_right = 0
+
 #tamanho------------------------------------------------------------------------------
 const SIZE_CHANGE = 0.2
 var escala = 1
@@ -44,6 +47,7 @@ func _physics_process(_delta):
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	
 	if move:
+		
 		move_and_slide()
 		
 	#botei que ele pode fazer um filho a cada 5 lixos comidos, mas dá pra mudar isso
