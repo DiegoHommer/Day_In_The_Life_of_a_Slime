@@ -14,9 +14,6 @@ var quantas_arvores = 0
 var lista_arvores = []
 var lista_inimigos = []
 
-#ele tá salvando as scenes das areas em ares[i][j]
-#o heat de cada area é areas[i][j].level
-
 
 var trash = 0
 
@@ -29,8 +26,6 @@ func _ready():
 			areas[i][j].position = Vector2(320*(i-float(HEATMAP_SIZE)/2), 320*(j-float(HEATMAP_SIZE)/2))
 			areas[i][j].level = 0
 			
-	#Aqui ele sorteia as posições das duas cidades
-
 	var A_x = randi_range(1,4)
 	var A_y = randi_range(1, 4)
 
@@ -61,9 +56,7 @@ func _ready():
 	gerar_inimigos()
 	
 
-
-func cidade(x, y): 
-
+func cidade(x, y):
 	areas[x][y].level = 6
 	areas[x+1][y].level = 6
 	areas[x][y+1].level = 6
