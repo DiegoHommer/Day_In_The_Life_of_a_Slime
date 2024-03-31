@@ -2,8 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://d3imt2s6ikkdj" path="res://scenes/pc.tscn" id="1_gekrl"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_le7ab"]
+
 [ext_resource type="PackedScene" uid="uid://3c4wokfy6mt4" path="res://scenes/escola.tscn" id="2_5hqxw"]
 [ext_resource type="PackedScene" uid="uid://j6yhilxiw5aj" path="res://scenes/enemy.tscn" id="3_14bhi"]
+[ext_resource type="PackedScene" uid="uid://dnronrdvg66lm" path="res://scenes/cursor.tscn" id="3_tghxe"]
+
 [ext_resource type="Script" path="res://Camera2D.gd" id="6_fedkr"]
 [ext_resource type="Script" path="res://gerador_do_heatmap.gd" id="8_p2y4t"]
 
@@ -18,6 +21,9 @@ script = ExtResource("8_p2y4t")
 [node name="PC" parent="Familia" instance=ExtResource("1_gekrl")]
 unique_name_in_owner = true
 position = Vector2(2, 1)
+
+[node name="cursor" parent="Familia/PC" instance=ExtResource("3_tghxe")]
+unique_name_in_owner = true
 
 [node name="escola" parent="." instance=ExtResource("2_5hqxw")]
 position = Vector2(89, 168)
