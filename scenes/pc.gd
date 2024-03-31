@@ -17,13 +17,13 @@ var is_dad = false
 
 var dad_speed = 0
 
-<<<<<<< Updated upstream
-=======
+
 var control_mode = 1
 var stick_left = 0
 var stick_right = 0
 
->>>>>>> Stashed changes
+
+
 #tamanho------------------------------------------------------------------------------
 const SIZE_CHANGE = 0.2
 var escala = 1
@@ -43,6 +43,7 @@ var tempo = 0
 
 
 func _ready():
+	position = Vector2(-2000,2000)
 	parent = get_parent() 
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	

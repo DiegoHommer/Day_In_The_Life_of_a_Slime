@@ -30,6 +30,7 @@ func _ready():
 			areas[i][j].level = 0
 			
 	#Aqui ele sorteia as posições das duas cidades
+
 	var A_x = randi_range(1,4)
 	var A_y = randi_range(1, 4)
 
@@ -60,7 +61,9 @@ func _ready():
 	gerar_inimigos()
 	
 
+
 func cidade(x, y): 
+
 	areas[x][y].level = 6
 	areas[x+1][y].level = 6
 	areas[x][y+1].level = 6
