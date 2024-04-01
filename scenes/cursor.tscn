@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://dnronrdvg66lm"]
+[gd_scene load_steps=2 format=3 uid="uid://dnronrdvg66lm"]
+
+[ext_resource type="Texture2D" uid="uid://b2a1lb50xf84f" path="res://Assets/slimecursor.png" id="1_6h5yn"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(1, 0.905882, 0.321569, 1)
-polygon = PackedVector2Array(0, 0, -24, 8, -8, 24)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("1_6h5yn")

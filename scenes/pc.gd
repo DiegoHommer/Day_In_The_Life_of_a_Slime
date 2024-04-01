@@ -71,6 +71,7 @@ func _physics_process(_delta):
 	speed = BASE_SPEED/(escala**SLOW_DOWN) #muda a velocidade pelo tamanho
 	
 	if Input.is_action_just_pressed("ir_para_menu"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	
 	if move:
