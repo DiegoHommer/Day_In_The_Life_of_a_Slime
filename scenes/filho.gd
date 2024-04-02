@@ -12,6 +12,7 @@ var escala = 1
 var mult_dist = 1
 
 var school_position = Vector2(2000, -2000)
+#var school_position = Vector2(-1600,2000)
 
 func _ready():
 	parent = get_parent() #"parent" aqui é o parent node (que é o main por enquanto) e não o pc

@@ -21,6 +21,13 @@ func add_trash():
 	#coloca na label (%QtdLixo) a quantidade de lixos
 	qtd_lixo.text = "lixos: " + str(trash)
 	
+# Função de absorção do lixo
+func add_five_trash():
+	trash += 5
+	#coloca na label (%QtdLixo) a quantidade de lixos
+	qtd_lixo.text = "lixos: " + str(trash)
+	
+	
 # Função de perda do lixo após player tomar hit
 func lose_trash():
 	if (trash > 0):

@@ -31,7 +31,7 @@ const SLOW_DOWN = 0.5
 #filhos-------------------------------------------------------------------------------
 var filho_scene = preload("res://scenes/filho.tscn")
 var filho_count = 0
-const LIXO_POR_FILHO = 5
+const LIXO_POR_FILHO = 1
 var parent = ""
 var tempo = 0
 
@@ -41,6 +41,7 @@ var tempo = 0
 
 func _ready():
 	position = Vector2(-2000,2000)
+	
 	parent = get_parent() 
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	
@@ -108,9 +109,12 @@ func _on_timer_timeout():
 
 	if game_manager.leaving_school:
 		var aux2 = 1 + 0.2 * game_manager.filhos_in_school
-		while escala <= aux2:
+		while escala <= aux2 and escala < 3:
 			change_size(true)
 			game_manager.att_school(false) #false pq tá diminuindo
+			#game_manager.add_five_trash()
+			game_manager.add_trash()
+			
 		if game_manager.filhos_in_school <= 0:
 			game_manager.leaving_school = false
 		if game_manager.leaving_school:
