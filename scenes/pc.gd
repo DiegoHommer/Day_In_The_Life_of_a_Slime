@@ -13,6 +13,11 @@ var is_dad = false
 
 var dad_speed = 0
 
+#controle
+@onready var cursor = %cursor
+var direction_x 
+var direction_y
+var control_mode = 1
 var stick_left = 0
 var stick_right = 0
 
@@ -26,7 +31,7 @@ const SLOW_DOWN = 0.5
 #filhos-------------------------------------------------------------------------------
 var filho_scene = preload("res://scenes/filho.tscn")
 var filho_count = 0
-const LIXO_POR_FILHO = 1
+const LIXO_POR_FILHO = 5
 var parent = ""
 var tempo = 0
 
@@ -37,6 +42,7 @@ var tempo = 0
 func _ready():
 	position = Vector2(-2000,2000)
 	parent = get_parent() 
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	
 
 
@@ -44,7 +50,26 @@ func _physics_process(_delta):
 	speed = BASE_SPEED/(escala**SLOW_DOWN) #muda a velocidade pelo tamanho
 	
 	if Input.is_action_just_pressed("ir_para_menu"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	
+#coisas do controle
+	if Input.get_last_mouse_velocity().length() > 0.1:
+		control_mode = 0
+	
+	direction_x = Input.get_action_strength("left_stick_r") - Input.get_action_strength("left_stick_l")
+	direction_y = Input.get_action_strength("left_stick_d") - Input.get_action_strength("left_stick_u")
+		
+	if direction_x > 0 or direction_y > 0:
+		control_mode = 1
+		
+	if control_mode == 0:
+		cursor.global_position = get_global_mouse_position()
+		
+	if control_mode == 1:
+		if Vector2(direction_x, direction_y).length() != 0:
+			cursor.position = 150*Vector2(direction_x, direction_y).normalized() 
+		
 	
 	if move:
 		move_and_slide()
@@ -59,10 +84,13 @@ func _physics_process(_delta):
 func _on_timer_timeout():
 	#a cada 0.5 segundo ele muda entre parado e se mexendo (move = false ou move = true), e decide na direção
 	move = not move
-	direction = get_global_mouse_position() - position
+	if control_mode == 0:
+		direction = get_global_mouse_position() - position
 	
-	if direction.length() < 20: #se ele tiver muito perto do mouse ele fica parado
-		direction = Vector2(0,0)
+	else:
+		if Vector2(direction_x, direction_y).length() != 0:
+			direction = Vector2(direction_x, direction_y)
+			
 	direction = direction.normalized()
 	
 	if move:
