@@ -2,6 +2,8 @@ extends Node
 @onready var pc = %PC
 @onready var qtd_filhos = %QtdFilhos
 @onready var qtd_lixo = %QtdLixo
+@onready var qtd_filhos_home = %QtdFilhosHome
+
 
 var trash = 0
 var lost_trash = 0
@@ -19,14 +21,8 @@ func game_over():
 	print("morreu :(")
 
 # Função de absorção do lixo
-func add_trash():
-	trash += 1
-	#coloca na label (%QtdLixo) a quantidade de lixos
-	qtd_lixo.text = "lixos: " + str(trash)
-	
-# Função de absorção do lixo
-func add_five_trash():
-	trash += 5
+func add_trash(qtd):
+	trash += qtd
 	#coloca na label (%QtdLixo) a quantidade de lixos
 	qtd_lixo.text = "lixos: " + str(trash)
 	
@@ -82,4 +78,4 @@ func att_home(aumentou):
 	else:
 		filhos_in_casa -= 1
 	
-	print("Tenho" + str(filhos_in_casa) + "filhos em casa")
+	qtd_filhos_home.text = "casa: " + str(filhos_in_casa)

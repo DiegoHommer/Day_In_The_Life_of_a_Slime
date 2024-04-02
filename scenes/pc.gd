@@ -33,7 +33,7 @@ var escala = 1
 const SLOW_DOWN = 0.5
 #variável para dizer qual o tamanho do slime pai, indo de 0 até 9
 var tamanho = 0
-const MAX_TAMANHO = 5
+const MAX_TAMANHO = 9
 
 #filhos-------------------------------------------------------------------------------
 var filho_scene = preload("res://scenes/filho.tscn")
@@ -139,9 +139,8 @@ func _on_timer_timeout():
 func leaving_school():
 	while tamanho <= MAX_TAMANHO and game_manager.filhos_in_school >= 1:
 		game_manager.att_school(false) #false pq tá diminuindo
-		#game_manager.add_five_trash()
-		game_manager.add_trash()
-		#game_manager.add_trash()
+		game_manager.add_trash(LIXO_POR_FILHO)
+	
 		change_size(true)
 	
 	#verifica se ainda está saindo da escola
