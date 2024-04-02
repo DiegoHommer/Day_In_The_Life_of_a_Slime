@@ -1,7 +1,7 @@
 extends Area2D
 @onready var game_manager = ""
 @onready var pc = ""
-
+var um_lixo = 1
 func _ready():
 	#fiz isso porque os lixos spawnados não tavam achando o GameManager e o PC do jeito que tava
 	owner = get_parent().owner  
@@ -13,7 +13,7 @@ func _ready():
 func _on_body_entered(body):
 	# Se o player entra em contato com o lixo, o lixo é absorvido
 	if (body.name == "PC" and pc.tamanho <= pc.MAX_TAMANHO):
-		game_manager.add_trash()
+		game_manager.add_trash(um_lixo)
 		
 		pc.change_size(true)
 		queue_free()

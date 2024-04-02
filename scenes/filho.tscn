@@ -17,7 +17,3 @@ polygon = PackedVector2Array(0, -8, -8, 0, 0, 8, 8, 0)
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_0px37")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
-
-[node name="Timer" type="Timer" parent="."]
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
