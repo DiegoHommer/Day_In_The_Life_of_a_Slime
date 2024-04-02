@@ -31,7 +31,7 @@ const SLOW_DOWN = 0.5
 #filhos-------------------------------------------------------------------------------
 var filho_scene = preload("res://scenes/filho.tscn")
 var filho_count = 0
-const LIXO_POR_FILHO = 1
+const LIXO_POR_FILHO = 5
 var parent = ""
 var tempo = 0
 
@@ -112,8 +112,8 @@ func _on_timer_timeout():
 		while escala <= aux2 and escala < 3:
 			change_size(true)
 			game_manager.att_school(false) #false pq tá diminuindo
-			#game_manager.add_five_trash()
-			game_manager.add_trash()
+			game_manager.add_five_trash()
+			#game_manager.add_trash()
 			
 		if game_manager.filhos_in_school <= 0:
 			game_manager.leaving_school = false
