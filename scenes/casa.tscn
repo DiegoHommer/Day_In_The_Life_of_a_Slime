@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2ef43vap32qv"]
+
+[ext_resource type="Script" path="res://scenes/casa.gd" id="1_87ig3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s61xk"]
+size = Vector2(75.75, 69.5)
+
+[node name="casa" type="Area2D"]
+position = Vector2(-22, 20)
+collision_mask = 6
+script = ExtResource("1_87ig3")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(22.125, -20.25)
+shape = SubResource("RectangleShape2D_s61xk")
+
+[node name="Polygon2D" type="Polygon2D" parent="CollisionShape2D"]
+position = Vector2(0, -9.875)
+scale = Vector2(2.37023, 1.72523)
+color = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(-16, -15, 16, -15, 15.9795, 26.156, -16.0849, 26.156)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

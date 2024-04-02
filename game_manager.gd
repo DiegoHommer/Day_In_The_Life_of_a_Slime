@@ -6,11 +6,14 @@ extends Node
 var trash = 0
 var lost_trash = 0
 var filhos_in_school = 0
+var filhos_in_casa = 0
 
 #variável que mostra se os filhos estão indo para escola ou não
 var going_school = false
 #variável que mostra se os filhos estão saindo da escola ou não
 var leaving_school = false
+#variável que mostra se os filhos estão indo para casa ou não
+var going_home = false
 
 func game_over():
 	print("morreu :(")
@@ -71,3 +74,12 @@ func att_school(aumentou):
 	qtd_filhos.text = "escola: " + str(filhos_in_school)
 
 
+# Função de "colocar" os filhos em casa
+func att_home(aumentou):
+#atualiza a quantidade de filhos na escola
+	if aumentou:
+		filhos_in_casa += 1
+	else:
+		filhos_in_casa -= 1
+	
+	print("Tenho" + str(filhos_in_casa) + "filhos em casa")

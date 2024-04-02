@@ -39,7 +39,7 @@ const MAX_TAMANHO = 5
 var filho_scene = preload("res://scenes/filho.tscn")
 #quantos filhos ele tem com ele
 var filho_count = 0
-const LIXO_POR_FILHO = 2
+const LIXO_POR_FILHO = 5
 var parent = ""
 var tempo = 0
 
@@ -92,8 +92,8 @@ func _physics_process(_delta):
 		move_and_slide()
 			
 	# input de dar o dash e fazer filho, 
-	# só pode ser acionado se tiver filho o suficiente e não está colocando filhos na escola
-	if Input.is_action_just_pressed("dash_filho") and game_manager.get_trash() >= LIXO_POR_FILHO and game_manager.going_school == false:
+	# só pode ser acionado se tiver filho o suficiente e não está colocando filhos na escola nem em casa
+	if Input.is_action_just_pressed("dash_filho") and game_manager.get_trash() >= LIXO_POR_FILHO and game_manager.going_school == false and game_manager.going_home == false:
 		fazer_filho()
 
 		
@@ -141,7 +141,7 @@ func leaving_school():
 		game_manager.att_school(false) #false pq tá diminuindo
 		#game_manager.add_five_trash()
 		game_manager.add_trash()
-		game_manager.add_trash()
+		#game_manager.add_trash()
 		change_size(true)
 	
 	#verifica se ainda está saindo da escola

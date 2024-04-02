@@ -11,8 +11,10 @@ var direction = Vector2(0,0)
 var escala = 1
 var mult_dist = 1
 
-#var school_position = Vector2(2000, -2000)
-var school_position = Vector2(-1600,2000)
+const SCHOOL_POSITION = Vector2(2000, -2000)
+#const SCHOOL_POSITION = Vector2(-1600,2000)
+
+const HOME_POSITION = Vector2(-2300,2300)
 
 func _ready():
 	parent = get_parent() #"parent" aqui é o parent node (que é o main por enquanto) e não o pc
@@ -29,7 +31,9 @@ func _physics_process(_delta):
 	if move and pc.direction != Vector2(0,0) and pc.obter_filho_count() != 0: #
 		
 		if game_manager.going_school:
-			direction = school_position - position
+			direction = SCHOOL_POSITION - position
+		elif game_manager.going_home:
+			direction = HOME_POSITION - position
 		else:
 			#isso serve pra ajustar o ponto que ele segue dependendo do tamanho do pc 
 			mult_dist = parent.get_child(numero-1).escala 
@@ -49,5 +53,6 @@ func _physics_process(_delta):
 
 func get_number() -> int:
 	return numero
+
 
 
