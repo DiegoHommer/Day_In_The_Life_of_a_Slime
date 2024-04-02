@@ -1,5 +1,8 @@
 extends Camera2D
 
+#quanto maior isso for maior o efeito de aceleração da câmera  quando o player sai de perto do centro
+const CAMERA_EXPOENTE = 0.05 
+
 var direction = Vector2(0,0)
 var is_zoomed = false
 
@@ -20,6 +23,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	direction = pc.position - position
+	direction*=direction.length()**(CAMERA_EXPOENTE)
 	#direction = direction.normalized()
 	velocity = speed*direction
 	position += velocity

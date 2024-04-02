@@ -13,10 +13,14 @@ var is_dad = false
 #variável para saber qual a velocidade do pai
 var dad_speed = 0
 
+var time = 0
+
+
 #controle------------------------------------------------------------------------------
+
 @onready var cursor = %cursor
-var direction_x 
-var direction_y
+var direction_x = 0
+var direction_y = 0
 var control_mode = 1
 var stick_left = 0
 var stick_right = 0
@@ -52,8 +56,11 @@ func _ready():
 
 
 func _physics_process(_delta):
-	
-	speed = BASE_SPEED/(escala**SLOW_DOWN) #muda a velocidade pelo tamanho
+
+	speed = BASE_SPEED
+
+
+	#speed = BASE_SPEED/(escala**SLOW_DOWN) #muda a velocidade pelo tamanho
 	
 #se apertar esc, ir para menu
 	if Input.is_action_just_pressed("ir_para_menu"):
@@ -64,10 +71,13 @@ func _physics_process(_delta):
 	if Input.get_last_mouse_velocity().length() > 0.1:
 		control_mode = 0
 	
-	direction_x = Input.get_action_strength("left_stick_r") - Input.get_action_strength("left_stick_l")
-	direction_y = Input.get_action_strength("left_stick_d") - Input.get_action_strength("left_stick_u")
+	var move_x = Input.get_action_strength("left_stick_r") - Input.get_action_strength("left_stick_l")
+	var move_y = Input.get_action_strength("left_stick_d") - Input.get_action_strength("left_stick_u")
+	if move_x != 0 or move_y != 0:
+		direction_x = move_x
+		direction_y = move_y
 		
-	if direction_x > 0 or direction_y > 0:
+	if move_x > 0 or move_y > 0:
 		control_mode = 1
 		
 	if control_mode == 0:
@@ -112,10 +122,14 @@ func _on_timer_timeout():
 			velocity = speed * direction
 			dad_speed = speed
 
+		time = Time.get_unix_time_from_system()
+
+
 # parte de sair da escola -------------------------------------------------------------------------
 	#verifica se ainda está saindo da escola
 	if game_manager.filhos_in_school == 0:
 		game_manager.leaving_school = false
+
 	
 	#se está saindo da escola
 	if game_manager.leaving_school:

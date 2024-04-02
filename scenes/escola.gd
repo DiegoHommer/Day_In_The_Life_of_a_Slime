@@ -10,9 +10,12 @@ var aux_num_filho = 0
 var school_position
 
 func _ready():
+
+
 	#position = Vector2(2000, -2000)
 	position = Vector2(-1600,2000)
 	school_position = position
+
 
 func _on_body_entered(body):
 	print(body.name)

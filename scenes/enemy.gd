@@ -34,21 +34,25 @@ func _on_dash_timer_timeout():
 		velocity = distance * enemy_velocity
 	else:
 		# 50% de chance de...
-		if (randf() >= 0.5):
+		if (randf() >= 0):
+			
 			var decided_destiny = false
-			var x_index = (self.position.x + (heatmap.HEATMAP_SIZE/2)) / 320
-			var y_index = (self.position.y + (heatmap.HEATMAP_SIZE/2)) / 320
+			var x_index = int((self.position.x + (heatmap.HEATMAP_SIZE*320/2)) / 320)
+			var y_index = int((self.position.y + (heatmap.HEATMAP_SIZE*320/2)) / 320)
 			
 			while (not decided_destiny):
+				
 				# Sorteia um dos quadrados do heatmap em volta
-				var rand_x = randi_range(max(x_index - 1, 0),max(x_index + 1,heatmap.HEATMAP_SIZE - 1))
-				var rand_y = randi_range(max(y_index - 1, 0),max(y_index + 1,heatmap.HEATMAP_SIZE - 1))
+				var rand_x = randi_range(max(x_index - 1, 0),min(x_index + 1,heatmap.HEATMAP_SIZE - 1))
+				var rand_y = randi_range(max(y_index - 1, 0),min(y_index + 1,heatmap.HEATMAP_SIZE - 1))
 				
 				# Quadrado com nível mais alto tem mais probabilidade de ser destino
-				if (randf_range(0,1)*(heatmap.areas[rand_x][rand_y].level+1)>0.92):
+				if (randf_range(0,1)*(heatmap.areas[rand_x][rand_y].level+1)>0.85):
 					decided_destiny = true
 					var destiny_x = heatmap.areas[rand_x][rand_y].position.x + 320*randf()
 					var destiny_y = heatmap.areas[rand_x][rand_y].position.y + 320*randf()
+					#print(rand_x, ", ", rand_y)
+					#print(destiny_x, ", " ,destiny_y)
 					velocity = Vector2(destiny_x,destiny_y) - self.position
 					velocity = velocity.normalized() * enemy_velocity
 					
