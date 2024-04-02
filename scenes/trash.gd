@@ -12,7 +12,7 @@ func _ready():
 
 func _on_body_entered(body):
 	# Se o player entra em contato com o lixo, o lixo é absorvido
-	if (body.name == "PC"):
+	if (body.name == "PC" and pc.tamanho <= pc.MAX_TAMANHO):
 		game_manager.add_trash()
 		
 		pc.change_size(true)
