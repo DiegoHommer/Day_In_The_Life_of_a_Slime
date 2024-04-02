@@ -103,13 +103,20 @@ func _on_timer_timeout():
 			dad_speed = speed
 	
 	
-	if game_manager.filhos_in_school == 0:
-				game_manager.leaving_school = false
+	if game_manager.filhos_in_school <= 0:
+		game_manager.leaving_school = false
 
 	if game_manager.leaving_school:
-		print("tô fazendo filho")
-		fazer_filho()
-		game_manager.att_school(false) #false pq tá diminuindo
+		var aux2 = 1 + 0.2 * game_manager.filhos_in_school
+		while escala <= aux2:
+			change_size(true)
+			game_manager.att_school(false) #false pq tá diminuindo
+		if game_manager.filhos_in_school <= 0:
+			game_manager.leaving_school = false
+		if game_manager.leaving_school:
+			print("tô fazendo filho")
+			fazer_filho()
+			game_manager.att_school(false) #false pq tá diminuindo
 
 # Função agora é generica e recebe o booleano *aumenta* para definir se diminui ou aumenta o tamanho do PC
 #arrumar para não ser quando for divisivel por 3. fazer caso geral pra quando for diminuir tbmm
