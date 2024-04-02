@@ -21,10 +21,18 @@ func add_trash():
 	#coloca na label (%QtdLixo) a quantidade de lixos
 	qtd_lixo.text = "lixos: " + str(trash)
 	
+# Função de absorção do lixo
+func add_five_trash():
+	trash += 5
+	#coloca na label (%QtdLixo) a quantidade de lixos
+	qtd_lixo.text = "lixos: " + str(trash)
+	
+	
 # Função de perda do lixo após player tomar hit
 func lose_trash():
 	if (trash > 0):
 		var aux = trash
+		#arredonda pra baixo
 		trash = floor(float(trash)/2)
 		lost_trash = aux - trash
 		#coloca na label (%QtdLixo) a quantidade de lixos
@@ -32,6 +40,12 @@ func lose_trash():
 	else:
 		lost_trash = 0
 		game_over()
+
+#função que gasta o número de lixos para dar um_dash/fazer_filho
+func spend_trash():
+	if(trash >= pc.LIXO_POR_FILHO):
+		lost_trash = pc.LIXO_POR_FILHO
+		att_trash(pc.LIXO_POR_FILHO)
 
 # Função de atualização do lixo, quando fizer filho, tem que diminuir a qtd de
 # lixo que possui 
