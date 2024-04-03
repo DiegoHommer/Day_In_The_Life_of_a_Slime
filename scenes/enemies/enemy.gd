@@ -118,11 +118,10 @@ func _on_dash_timer_timeout():
 		"Warrior": warrior_movement()
 		"Archer": archer_movement()
 		_: print("Tipo de inimigo inexistente")
-
+	animation_logic()
 
 func _physics_process(_delta):
 	if (move):
-		animation_logic()
 		move_and_slide()
 	
 
