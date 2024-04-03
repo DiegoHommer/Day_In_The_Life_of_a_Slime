@@ -13,6 +13,7 @@ var rand_float = 0
 var move = true
 var chase = false
 var enemy_type = "Warrior"
+var enemy_sprite = "WarriorSprite"
 var arrow_scene = preload("res://scenes/enemies/arrow.tscn")
 
 func _ready():
@@ -22,7 +23,9 @@ func _ready():
 	pc = owner.get_node("Familia/PC")
 	immunity_timer = owner.get_node("Familia/PC/ImmunityTimer")
 	player_sprite = owner.get_node("Familia/PC/Polygon2D")
-	heatmap = owner.get_node("gerador_do_heatmap") 
+	heatmap = owner.get_node("gerador_do_heatmap")
+	enemy_sprite = self.get_node("WarriorSprite")
+ 
 
 	velocity = Vector2(enemy_velocity, enemy_velocity)
   
@@ -92,6 +95,24 @@ func archer_movement():
 	#a cada 0.5 segundo ele muda entre parado e se mexendo (move = false ou move = true), e decide na direção
 	move = not move
 	
+	
+func animation_logic():
+	var direction_angle = velocity.angle()
+	var is_angry = "normal"
+	
+	# Lógica verifica se inimigo está perseguindo player para mudar sprites
+	if (chase):
+		is_angry = "angry"
+		
+	if (cos(direction_angle) > (PI/4)):
+		enemy_sprite.animation = "right_" + is_angry
+	elif (cos(direction_angle) < (-PI/4)):
+		enemy_sprite.animation = "left_" + is_angry
+	elif (sin(direction_angle) < 0):
+		enemy_sprite.animation = "up_" + is_angry
+	else: 
+		enemy_sprite.animation = "down_" + is_angry
+
 func _on_dash_timer_timeout():
 	match enemy_type:
 		"Warrior": warrior_movement()
@@ -101,6 +122,7 @@ func _on_dash_timer_timeout():
 
 func _physics_process(_delta):
 	if (move):
+		animation_logic()
 		move_and_slide()
 	
 
@@ -156,3 +178,7 @@ func _on_vision_body_exited(body):
 		# Quando todos os filhos e o player saíram da visão, para de perseguir
 		if (bodies_inside == 0):
 			chase = false
+
+
+func _on_warrior_sprite_animation_changed():
+	enemy_sprite.play()
