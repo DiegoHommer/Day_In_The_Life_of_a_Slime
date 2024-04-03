@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2ef43vap32qv"]
 
-[ext_resource type="Script" path="res://scenes/casa.gd" id="1_87ig3"]
+[ext_resource type="Script" path="res://scenes/world/casa.gd" id="1_87ig3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s61xk"]
 size = Vector2(75.75, 69.5)

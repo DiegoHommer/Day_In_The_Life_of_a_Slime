@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://j6yhilxiw5aj"]
 
-[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_7wegl"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_k3fqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hv04y"]
 size = Vector2(32, 32)
@@ -14,7 +14,7 @@ radius = 240.075
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 8
 motion_mode = 1
-script = ExtResource("1_7wegl")
+script = ExtResource("1_k3fqa")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hv04y")
