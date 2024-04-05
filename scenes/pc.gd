@@ -46,6 +46,8 @@ var tempo = 0
 #lixo-------------------------------------------------------------------------------
 @onready var game_manager = %GameManager
 
+#animation--------------------------------------------------------------------------
+@onready var animationPlayer = $AnimationPlayer
 
 func _ready():
 	position = Vector2(-2000,2000)
@@ -88,8 +90,12 @@ func _physics_process(_delta):
 			cursor.position = 150*Vector2(direction_x, direction_y).normalized() 
 #fim coisas do controle---------------------------------------------------------------------------------------	
 	
+	#chamando movimentação e seleção da animação
 	if move:
 		move_and_slide()
+		animationPlayer.play("walk_right_size1")
+	else:
+		animationPlayer.play("idle_right_size1")
 			
 	# input de dar o dash e fazer filho, 
 	# só pode ser acionado se tiver filho o suficiente e não está colocando filhos na escola nem em casa

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0fcyev6bjxmy"
-path="res://.godot/imported/school.png-e9f5d768034cc1d79817fbd079b599a8.ctex"
+path="res://.godot/imported/school.png-4304e220c0a8d3dbb4fcacb594964197.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/world/school.png"
-dest_files=["res://.godot/imported/school.png-e9f5d768034cc1d79817fbd079b599a8.ctex"]
+source_file="res://Assets/world/school.png"
+dest_files=["res://.godot/imported/school.png-4304e220c0a8d3dbb4fcacb594964197.ctex"]
 
 [params]
 
