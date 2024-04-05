@@ -4,7 +4,8 @@ const HEATMAP_SIZE = 16
 const DIFICULDADE = 2
 const TOTAL_LIXO = 120
 const TOTAL_ARVORES = 40
-const TOTAL_INIMIGOS = 20
+const TOTAL_INIMIGOS = DIFICULDADE * 5
+const TOTAL_ARQUEIROS = 20
 const TREE_SPRITES = "res://assets/world/trees/tree"
 const TRASH_SPRITES = "res://assets/world/trash/trash"
 var lixo_scene = preload("res://scenes/world/trash.tscn")
@@ -174,13 +175,36 @@ func gerar_arvores():
 			
 func gerar_inimigos():
 	var quantos_inimigos = 0
-	while( quantos_inimigos < TOTAL_INIMIGOS):
+	while( quantos_inimigos < (TOTAL_INIMIGOS - TOTAL_ARQUEIROS)):
 		#sorteia uma posição
 		var rand_x = randi_range(0,HEATMAP_SIZE - 1)
 		var rand_y = randi_range(0,HEATMAP_SIZE - 1)
 		#a chance de criar um inimigo na posição sorteada depende do heat da área da posição
 		if (randf_range(0,1)*(areas[rand_x][rand_y].level+1)>0.92) and not (rand_x > HEATMAP_SIZE - 3 and rand_y < 3) and not (rand_x < 3 and rand_y > HEATMAP_SIZE - 3):
 			var enemy = enemy_scene.instantiate()
+			enemy.enemy_type = "Warrior"
+			add_child(enemy) 
+			var respawn = true
+			while (respawn):
+				respawn = false
+				enemy.position = areas[rand_x][rand_y].position + Vector2(randi_range(0,320), randi_range(0,320))
+				for arvore in lista_arvores:
+					if (arvore.position - enemy.position).length() < 80:
+						respawn = true
+				for outro_inimigo in lista_inimigos:
+					if (outro_inimigo.position - enemy.position).length() < 80:
+						respawn = true
+			lista_inimigos.append(enemy)
+			quantos_inimigos +=1
+	
+	while( quantos_inimigos < TOTAL_INIMIGOS):
+		#sorteia uma posição
+		var rand_x = randi_range(0,HEATMAP_SIZE - 1)
+		var rand_y = randi_range(0,HEATMAP_SIZE - 1)
+		#a chance de criar um inimigo na posição sorteada depende do heat da área da posição
+		if (randf_range(0,1)*(areas[rand_x][rand_y].level+1)<0.92) and not (rand_x > HEATMAP_SIZE - 4 and rand_y < 4) and not (rand_x < 4 and rand_y > HEATMAP_SIZE - 4):
+			var enemy = enemy_scene.instantiate()
+			enemy.enemy_type = "Archer"
 			add_child(enemy) 
 			var respawn = true
 			while (respawn):

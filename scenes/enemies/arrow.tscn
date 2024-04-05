@@ -1,39 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw0dg7b2ues7v"]
+[gd_scene load_steps=5 format=3 uid="uid://dw0dg7b2ues7v"]
 
 [ext_resource type="Script" path="res://scenes/enemies/arrow.gd" id="1_y5wyg"]
+[ext_resource type="Texture2D" uid="uid://ng1egjukatcy" path="res://assets/sprites/arrow.png" id="2_of0ky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7di8e"]
-size = Vector2(32, 2)
+size = Vector2(24, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46iif"]
-size = Vector2(32, 2)
+size = Vector2(24, 64)
 
 [node name="Arrow" type="CharacterBody2D"]
 collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_y5wyg")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(-4, -32)
 shape = SubResource("RectangleShape2D_7di8e")
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(1, 0.0625)
-color = Color(0.654902, 0.0784314, 0.203922, 1)
-polygon = PackedVector2Array(-16, -16, -0.156223, -16, 16, -16, 16, 16, 0, 16, -16, 16)
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 7
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 1)
+position = Vector2(-4, -32)
 shape = SubResource("RectangleShape2D_46iif")
 
 [node name="Airtime" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 10.0
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(8, 8)
+texture = ExtResource("2_of0ky")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="Airtime" to="." method="_on_airtime_timeout"]
