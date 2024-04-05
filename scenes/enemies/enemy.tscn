@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://brrhv8ducuj8a" path="res://assets/sprites/warrior.png" id="2_jljsk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hv04y"]
-size = Vector2(34, 45)
+size = Vector2(66, 102)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3g7vu"]
 atlas = ExtResource("2_jljsk")
@@ -185,7 +185,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"left_angry",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -202,7 +202,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"left_normal",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -219,7 +219,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"right_angry",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -236,7 +236,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"right_normal",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -253,7 +253,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"up_angry",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -270,11 +270,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"up_normal",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2feb2"]
-size = Vector2(34, 45)
+size = Vector2(66, 102)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1vkwc"]
 radius = 240.075
@@ -285,23 +285,22 @@ motion_mode = 1
 script = ExtResource("1_k3fqa")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
+position = Vector2(-3, 5)
 shape = SubResource("RectangleShape2D_hv04y")
 
 [node name="WarriorSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
-scale = Vector2(0.833333, 0.75)
+scale = Vector2(2, 1.801)
 sprite_frames = SubResource("SpriteFrames_nq2iv")
-animation = &"down_normal"
-frame_progress = 0.51659
+animation = &"up_angry"
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 7
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 1.5)
+position = Vector2(-3, 5)
 shape = SubResource("RectangleShape2D_2feb2")
 
 [node name="DashTimer" type="Timer" parent="."]

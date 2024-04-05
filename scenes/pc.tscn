@@ -1,10 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3imt2s6ikkdj"]
+[gd_scene load_steps=9 format=3 uid="uid://d3imt2s6ikkdj"]
 
 [ext_resource type="Script" path="res://scenes/pc.gd" id="1_rbhyv"]
 [ext_resource type="AudioStream" uid="uid://cimue4q10b843" path="res://audio/slime.ogg" id="2_04vth"]
+[ext_resource type="Texture2D" uid="uid://c0n5h635qvcyf" path="res://assets/sprites/slimep1.png" id="2_44yre"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odcxp"]
 size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak2f6"]
+atlas = ExtResource("2_44yre")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bio6h"]
+atlas = ExtResource("2_44yre")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5ea3"]
+atlas = ExtResource("2_44yre")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uvebk"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"down_dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ak2f6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bio6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5ea3")
+}],
+"loop": true,
+"name": &"down_walk",
+"speed": 5.0
+}]
 
 [node name="PC" type="CharacterBody2D"]
 collision_layer = 2
@@ -14,6 +49,8 @@ script = ExtResource("1_rbhyv")
 shape = SubResource("RectangleShape2D_odcxp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uvebk")
+animation = &"down_walk"
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.5

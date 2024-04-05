@@ -1,18 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://7mmbb1qa3p7p"]
+[gd_scene load_steps=3 format=3 uid="uid://7mmbb1qa3p7p"]
+
+[ext_resource type="Texture2D" uid="uid://dtnyqlo8t18bx" path="res://assets/world/trees/tree12.png" id="1_f3702"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewfwh"]
-size = Vector2(64, 64)
+size = Vector2(131, 93)
 
 [node name="Tree" type="StaticBody2D"]
+z_index = 1
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+texture_filter = 1
+scale = Vector2(8.46859, 8)
+texture = ExtResource("1_f3702")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 143.5)
 shape = SubResource("RectangleShape2D_ewfwh")
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(5.96046e-08, 5.96046e-08)
-scale = Vector2(2, 2)
-color = Color(0, 0.482353, 0.180392, 1)
-polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)

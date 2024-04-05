@@ -5,9 +5,11 @@ const DIFICULDADE = 2
 const TOTAL_LIXO = 120
 const TOTAL_ARVORES = 40
 const TOTAL_INIMIGOS = 20
+const TREE_SPRITES = "res://assets/world/trees/tree"
 var lixo_scene = preload("res://scenes/world/trash.tscn")
 var area_scene = preload("res://scenes/world/areas_mapa.tscn")
 var arvore_scene = preload("res://scenes/world/tree.tscn")
+var obstacle_scene = preload("res://scenes/world/obstacle.tscn")
 var enemy_scene = preload("res://scenes/enemies/enemy.tscn")
 var areas = []
 var quantas_arvores = 0
@@ -134,9 +136,21 @@ func gerar_arvores():
 		var rand_y = randi_range(0,HEATMAP_SIZE - 1)
 		#se a posição for verde e não for no canto da escola, ele cria uma árvore
 		if areas[rand_x][rand_y].level == 0 and not (rand_x > HEATMAP_SIZE - 3 and rand_y < 3) and not (rand_x < 3 and rand_y > HEATMAP_SIZE - 3):
-			
-			arvore = arvore_scene.instantiate()
+			var sorteio
+			if (randi_range(1,2) == 1):
+				arvore = arvore_scene.instantiate()
+				sorteio = randi_range(1,6)
+			else:
+				arvore = obstacle_scene.instantiate()
+				sorteio = randi_range(7,13)
+				
 			add_child(arvore) 
+			var arvore_sprite_path = arvore.get_node("Sprite2D")
+			var arvore_sprite = load(TREE_SPRITES + str(sorteio) + ".png")
+			arvore_sprite_path.set_texture(arvore_sprite)
+				
+			
+			
 			var respawn = true
 			
 			while respawn: #se a arvore spawnar muito perto de outra ele respawna
