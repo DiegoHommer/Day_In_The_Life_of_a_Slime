@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://booveeax1jcls"
-path="res://.godot/imported/tree12.png-f5d82350d1756bac57d3cf3c6dcf2a95.ctex"
+uid="uid://cgh45rw0f3x2r"
+path="res://.godot/imported/trash1.png-4a211ac600a9e936f864743d900d2bbe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/world/trees/tree12.png"
-dest_files=["res://.godot/imported/tree12.png-f5d82350d1756bac57d3cf3c6dcf2a95.ctex"]
+source_file="res://assets/world/trash/trash1.png"
+dest_files=["res://.godot/imported/trash1.png-4a211ac600a9e936f864743d900d2bbe.ctex"]
 
 [params]
 

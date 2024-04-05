@@ -22,7 +22,7 @@ func _ready():
 	game_manager = owner.get_node("GameManager")
 	pc = owner.get_node("Familia/PC")
 	immunity_timer = owner.get_node("Familia/PC/ImmunityTimer")
-	player_sprite = owner.get_node("Familia/PC/Polygon2D")
+	player_sprite = owner.get_node("Familia/PC/AnimatedSprite2D")
 	heatmap = owner.get_node("gerador_do_heatmap")
 	enemy_sprite = self.get_node("WarriorSprite")
  
@@ -136,7 +136,6 @@ func shoot():
 func attack():
 	game_manager.lose_trash() # PC perde metade do lixo
 	pc.change_size(false) # PC diminui em tamanho
-	player_sprite.set_color(Color(0,0,0,255)) # PC muda de sprite
 	immunity_timer.start() # PC recebe tempo de imunidade
 
 

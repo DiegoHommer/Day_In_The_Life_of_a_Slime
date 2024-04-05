@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://lesqwqmo67a"]
 
-[ext_resource type="Texture2D" uid="uid://c0wxd25t3asxr" path="res://assets/world/trees/tree7.png" id="1_rj3hg"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xral0"]
 size = Vector2(20, 14.526)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aufon"]
+load_path = "res://.godot/imported/tree11.png-9cea58265d1421bb31091538a739d290.ctex"
 
 [node name="Obstacle" type="StaticBody2D"]
 collision_mask = 0
@@ -18,4 +19,4 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 z_index = 1
 texture_filter = 1
 scale = Vector2(8.03283, 7.85107)
-texture = ExtResource("1_rj3hg")
+texture = SubResource("CompressedTexture2D_aufon")

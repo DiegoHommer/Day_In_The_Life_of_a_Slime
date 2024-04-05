@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c0n5h635qvcyf" path="res://assets/sprites/slimep1.png" id="2_44yre"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odcxp"]
-size = Vector2(32, 32)
+size = Vector2(59.3161, 73.9591)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ak2f6"]
 atlas = ExtResource("2_44yre")
@@ -42,15 +42,21 @@ animations = [{
 }]
 
 [node name="PC" type="CharacterBody2D"]
+scale = Vector2(1.0031, 1)
 collision_layer = 2
 script = ExtResource("1_rbhyv")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 1.5)
 shape = SubResource("RectangleShape2D_odcxp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0.996909, -22)
+scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_uvebk")
 animation = &"down_walk"
+autoplay = "down_walk"
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -61,6 +67,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [node name="Theme" type="AudioStreamPlayer2D" parent="."]

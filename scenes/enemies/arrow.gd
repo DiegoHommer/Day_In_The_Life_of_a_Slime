@@ -13,7 +13,6 @@ func _ready():
 	game_manager = parent.get_node("GameManager")
 	pc = parent.get_node("Familia/PC")
 	immunity_timer = parent.get_node("Familia/PC/ImmunityTimer")
-	player_sprite = parent.get_node("Familia/PC/Polygon2D")
 	
 	
 func new_arrow(initial_direction, initial_position):
@@ -35,7 +34,6 @@ func _on_airtime_timeout():
 func attack():
 	game_manager.lose_trash() # PC perde metade do lixo
 	pc.change_size(false) # PC diminui em tamanho
-	player_sprite.set_color(Color(0,0,0,255)) # PC muda de sprite
 	immunity_timer.start() # PC recebe tempo de imunidade
 
 
