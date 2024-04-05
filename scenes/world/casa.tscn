@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2ef43vap32qv"]
+[gd_scene load_steps=4 format=3 uid="uid://b2ef43vap32qv"]
 
 [ext_resource type="Script" path="res://scenes/world/casa.gd" id="1_87ig3"]
+[ext_resource type="Texture2D" uid="uid://dnvv7dvlh2283" path="res://assets/world/house.png" id="2_duprh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s61xk"]
-size = Vector2(75.75, 69.5)
+size = Vector2(293.851, 351.907)
 
 [node name="casa" type="Area2D"]
 position = Vector2(-22, 20)
@@ -12,13 +13,14 @@ script = ExtResource("1_87ig3")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(22.125, -20.25)
+z_index = 1
+position = Vector2(4, 16.5)
+scale = Vector2(0.968122, 0.99174)
 shape = SubResource("RectangleShape2D_s61xk")
 
-[node name="Polygon2D" type="Polygon2D" parent="CollisionShape2D"]
-position = Vector2(0, -9.875)
-scale = Vector2(2.37023, 1.72523)
-color = Color(1, 0, 1, 1)
-polygon = PackedVector2Array(-16, -15, 16, -15, 15.9795, 26.156, -16.0849, 26.156)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(8, 8)
+texture = ExtResource("2_duprh")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

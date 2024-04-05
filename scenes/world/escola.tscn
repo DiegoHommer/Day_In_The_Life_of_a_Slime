@@ -1,21 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://3c4wokfy6mt4"]
+[gd_scene load_steps=4 format=3 uid="uid://3c4wokfy6mt4"]
 
 [ext_resource type="Script" path="res://scenes/world/escola.gd" id="1_1aksx"]
+[ext_resource type="Texture2D" uid="uid://b0fcyev6bjxmy" path="res://assets/world/school.png" id="2_ygtwg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hnxb"]
-size = Vector2(155, 159)
+size = Vector2(395, 245)
 
 [node name="Escola" type="Area2D"]
 collision_mask = 6
 script = ExtResource("1_1aksx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, -2.5)
+position = Vector2(-0.5, -2.5)
 shape = SubResource("RectangleShape2D_8hnxb")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(-1, 0)
-color = Color(1, 0.988235, 0, 1)
-polygon = PackedVector2Array(-75, -76, 75, -76, 75, 76, -72, 75)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+scale = Vector2(8, 8)
+texture = ExtResource("2_ygtwg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

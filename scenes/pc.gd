@@ -27,7 +27,7 @@ var stick_right = 0
 
 #tamanho------------------------------------------------------------------------------
 const SIZE_CHANGE = 0.2
-var escala = 1
+var escala = 8
 #esse parâmetro controla o quão forte é a desaceleração dele quando ele cresce
 #se é 1, ele fica duas vezes mais lento quando tá duas vezes maior. Botei 0.5 porque parecia melhor, mas dá pra mudar
 const SLOW_DOWN = 0.5
@@ -171,10 +171,8 @@ func change_size(aumenta):
 		escala = max(round(10*(escala - SIZE_CHANGE*quanto_diminuir))/10,1)
 		tamanho -= quanto_diminuir
 		
-	$Collision.scale.x = escala
-	$Collision.scale.y = escala
-	$Polygon2D.scale.x = escala
-	$Polygon2D.scale.y = escala
+	$AnimatedSprite2D.scale.x = escala
+	$AnimatedSprite2D.scale.y = escala
 
 
 func fazer_filho():
@@ -234,12 +232,3 @@ func zerar_filho_count():
 func subtrair_filho_count(mortos):
 	filho_count -= mortos
 	print(filho_count)
-
-
-# Quando imunidade do player acaba, retorna a "sprite" para sua versão original
-@onready var player_sprite = %PC/Polygon2D
-
-func _on_immunity_timer_timeout():
-	player_sprite.set_color(Color(255,255,255,255))
-
-

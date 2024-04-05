@@ -5,9 +5,13 @@ const DIFICULDADE = 2
 const TOTAL_LIXO = 120
 const TOTAL_ARVORES = 40
 const TOTAL_INIMIGOS = 20
+const TREE_SPRITES = "res://assets/world/trees/tree"
+const TRASH_SPRITES = "res://assets/world/trash/trash"
 var lixo_scene = preload("res://scenes/world/trash.tscn")
 var area_scene = preload("res://scenes/world/areas_mapa.tscn")
 var arvore_scene = preload("res://scenes/world/tree.tscn")
+var obstacle_scene = preload("res://scenes/world/obstacle.tscn")
+var trash_scene = preload("res://scenes/world/trash.tscn")
 var enemy_scene = preload("res://scenes/enemies/enemy.tscn")
 var areas = []
 var quantas_arvores = 0
@@ -110,7 +114,11 @@ func gerar_lixo():
 		for j in HEATMAP_SIZE:
 			if areas[i][j].level == 3:
 				var lixo = lixo_scene.instantiate()
-				add_child(lixo) 
+				add_child(lixo)
+				var trash_sprite_path = lixo.get_node("Sprite2D")
+				var trash_sprite = load(TRASH_SPRITES + str(randi_range(2,8)) + ".png")
+				trash_sprite_path.set_texture(trash_sprite)
+
 				lixo.position = areas[i][j].position + Vector2(randi_range(0,320), randi_range(0,320))
 				quantos_lixos +=1
 	
@@ -122,7 +130,10 @@ func gerar_lixo():
 		#a chance de criar um lixo na posição sorteada depende do heat da área da posição
 		if (randf_range(0,1)*(areas[rand_x][rand_y].level+1)>0.92):
 			var lixo = lixo_scene.instantiate()
-			add_child(lixo) 
+			add_child(lixo)
+			var trash_sprite_path = lixo.get_node("Sprite2D")
+			var trash_sprite = load(TRASH_SPRITES + str(randi_range(2,8)) + ".png")
+			trash_sprite_path.set_texture(trash_sprite)
 			lixo.position = areas[rand_x][rand_y].position + Vector2(randi_range(0,320), randi_range(0,320))
 			quantos_lixos +=1
 		
@@ -134,9 +145,21 @@ func gerar_arvores():
 		var rand_y = randi_range(0,HEATMAP_SIZE - 1)
 		#se a posição for verde e não for no canto da escola, ele cria uma árvore
 		if areas[rand_x][rand_y].level == 0 and not (rand_x > HEATMAP_SIZE - 3 and rand_y < 3) and not (rand_x < 3 and rand_y > HEATMAP_SIZE - 3):
-			
-			arvore = arvore_scene.instantiate()
+			var sorteio
+			if (randi_range(1,2) == 1):
+				arvore = arvore_scene.instantiate()
+				sorteio = randi_range(1,6)
+			else:
+				arvore = obstacle_scene.instantiate()
+				sorteio = randi_range(7,12)
+				
 			add_child(arvore) 
+			var arvore_sprite_path = arvore.get_node("Sprite2D")
+			var arvore_sprite = load(TREE_SPRITES + str(sorteio) + ".png")
+			arvore_sprite_path.set_texture(arvore_sprite)
+				
+			
+			
 			var respawn = true
 			
 			while respawn: #se a arvore spawnar muito perto de outra ele respawna

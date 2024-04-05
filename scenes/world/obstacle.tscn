@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://lesqwqmo67a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xral0"]
+size = Vector2(20, 14.526)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aufon"]
+load_path = "res://.godot/imported/tree11.png-9cea58265d1421bb31091538a739d290.ctex"
+
+[node name="Obstacle" type="StaticBody2D"]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-1.26879e-06, 44.5133)
+scale = Vector2(11.888, 5.30266)
+shape = SubResource("RectangleShape2D_xral0")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+scale = Vector2(8.03283, 7.85107)
+texture = SubResource("CompressedTexture2D_aufon")
