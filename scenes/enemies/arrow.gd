@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 100
+const SPEED = 400
 var direction = ""
 var pc = ""
 var immunity_timer = ""
@@ -18,7 +18,7 @@ func _ready():
 func new_arrow(initial_direction, initial_position):
 	self.direction = initial_direction 
 	self.position = initial_position
-	rotation = direction.angle()
+	rotation = (direction.angle() + PI/2)
 
 
 func _physics_process(_delta):
@@ -54,3 +54,6 @@ func _on_hitbox_body_entered(body):
 					brother.queue_free() 
 		pc.subtrair_filho_count(mortos)
 		body.queue_free()
+	
+	elif (body.name != "Enemy"):
+		queue_free()
