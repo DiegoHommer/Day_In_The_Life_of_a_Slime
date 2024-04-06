@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tpr0angwg41s"
-path="res://.godot/imported/laranja4.png-f5dc10a229b8cd707750186c2a3c54fd.ctex"
+path="res://.godot/imported/laranja4.png-012d2d13ada5791ad74fa13d42dd4bf7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/world/floor/laranja4.png"
-dest_files=["res://.godot/imported/laranja4.png-f5dc10a229b8cd707750186c2a3c54fd.ctex"]
+source_file="res://Assets/world/floor/laranja4.png"
+dest_files=["res://.godot/imported/laranja4.png-012d2d13ada5791ad74fa13d42dd4bf7.ctex"]
 
 [params]
 

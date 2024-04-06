@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://b8tt2hkrilj5k"]
 
 [ext_resource type="Script" path="res://scenes/filho.gd" id="1_j64pl"]
-[ext_resource type="Texture2D" uid="uid://b51x1t4lgppey" path="res://assets/sprites/jrp1.png" id="2_6llmk"]
+[ext_resource type="Texture2D" uid="uid://b51x1t4lgppey" path="res://Assets/sprites/jrp1.png" id="2_6llmk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnnx7"]
 size = Vector2(88, 72)

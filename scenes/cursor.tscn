@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvc1hhkb4p78k"]
 
-[ext_resource type="Texture2D" uid="uid://dq35vy0vbns3" path="res://assets/slimecursor.png" id="1_s1rbw"]
+[ext_resource type="Texture2D" uid="uid://dq35vy0vbns3" path="res://Assets/slimecursor.png" id="1_s1rbw"]
 
 [node name="Node2D" type="Node2D"]
 

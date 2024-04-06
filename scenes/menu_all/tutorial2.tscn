@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://bec6u6bjlu1q7"]
+
+[ext_resource type="Script" path="res://scenes/menu_all/tutorial2.gd" id="1_2n1xq"]
+[ext_resource type="Texture2D" uid="uid://cl4scewiyymnd" path="res://Assets/menu_images/tile003.png" id="1_msjtn"]
+
+[node name="Tutorial2" type="Node"]
+script = ExtResource("1_2n1xq")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_msjtn")
+
+[node name="next" type="Button" parent="TextureRect2"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -462.0
+offset_top = -193.0
+offset_right = 467.0
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "
+"
+
+[node name="menu" type="Button" parent="TextureRect2"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 503.0
+offset_top = 247.0
+offset_right = 589.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "
+"
+
+[connection signal="pressed" from="TextureRect2/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="TextureRect2/menu" to="." method="_on_menu_pressed"]
