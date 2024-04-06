@@ -122,7 +122,9 @@ func _on_timer_timeout():
 	
 	
 	#Animação---------------------------------------------------------------------------------
+
 	tamanho_aux = tamanho + 1
+
 	if tamanho_aux >= 11:
 		tamanho_aux = 10
 	
