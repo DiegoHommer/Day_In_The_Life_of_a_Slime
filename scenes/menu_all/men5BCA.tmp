@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwy4qpmg2fk1y"]
+
+[ext_resource type="Script" path="res://scenes/menu_all/menu_all.gd" id="1_1fxoy"]
+[ext_resource type="PackedScene" uid="uid://bk4pnm8a2pjon" path="res://scenes/menu_all/main_menu.tscn" id="1_1q0o0"]
+[ext_resource type="AudioStream" uid="uid://c15jj1sfnphgm" path="res://Assets/Audio/music/slimemenu.ogg" id="2_a341y"]
+
+[node name="MenuAll" type="Node2D"]
+script = ExtResource("1_1fxoy")
+
+[node name="MainMenu" parent="." instance=ExtResource("1_1q0o0")]
+
+[node name="MenuTheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_a341y")
+volume_db = 1.0
+autoplay = true
+
+[connection signal="finished" from="MenuTheme" to="." method="_on_menu_theme_finished"]

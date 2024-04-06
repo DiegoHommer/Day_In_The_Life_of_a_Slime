@@ -283,3 +283,12 @@ func subtrair_filho_count(mortos):
 	if (filho_count < 0):
 		zerar_filho_count()
 	print(filho_count)
+
+@onready var theme = self.get_node("Theme")
+@onready var menu_theme = self.get_node("MenuTheme")
+
+func _on_theme_finished():
+	theme.play()
+
+func _on_menu_theme_finished():
+	menu_theme.play()

@@ -1,8 +1,8 @@
 [gd_scene load_steps=127 format=3 uid="uid://d3imt2s6ikkdj"]
 
 [ext_resource type="Script" path="res://scenes/pc.gd" id="1_rbhyv"]
-[ext_resource type="AudioStream" uid="uid://cimue4q10b843" path="res://Audio/slime.ogg" id="2_04vth"]
 [ext_resource type="Texture2D" uid="uid://c0n5h635qvcyf" path="res://Assets/sprites/slimep1.png" id="2_44yre"]
+[ext_resource type="AudioStream" uid="uid://dhjohd7l35kko" path="res://Assets/Audio/music/slime.ogg" id="2_t3gwg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odcxp"]
 size = Vector2(49.0978, 58.3129)
@@ -1909,8 +1909,8 @@ visible = false
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [node name="Theme" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_04vth")
-volume_db = -16.0
+stream = ExtResource("2_t3gwg")
+volume_db = -12.0
 autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1928,3 +1928,4 @@ vframes = 10
 frame = 5
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="Theme" to="." method="_on_theme_finished"]

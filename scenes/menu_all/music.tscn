@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl55ueijypjel"]
+
+[ext_resource type="AudioStream" uid="uid://c15jj1sfnphgm" path="res://Assets/Audio/music/slimemenu.ogg" id="1_ye74e"]
+
+[node name="Music" type="Node2D"]
+
+[node name="MenuTheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_ye74e")
