@@ -128,6 +128,9 @@ func _on_timer_timeout():
 	if tamanho_aux >= 11:
 		tamanho_aux = 10
 	
+	if tamanho_aux >= 11:
+		tamanho_aux = 10
+	
 	var name_aux = ""
 	if move:
 		if is_dad == false:
