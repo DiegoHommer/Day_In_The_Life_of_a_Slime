@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Day In The Life Of A Slime"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/menu_all/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/show_image=false
 config/icon="res://assets/slime.png"
