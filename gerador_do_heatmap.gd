@@ -55,6 +55,10 @@ func _ready():
 			areas[i][HEATMAP_SIZE - 1 - j].level = 0
 			areas[HEATMAP_SIZE - i - 1][j].level = 0
 			
+	for i in 16:
+		for j in  16:
+			areas[i][j].paint_tile()
+			
 		
 	gerar_lixo()
 	gerar_arvores()
