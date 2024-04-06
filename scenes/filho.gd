@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 var parent = ""
 var pc = ""
+var sprite = ""
 var speed = 250
 var numero = 0 #esse numero é setado pelo pc quando ele cria o filho. Diz se ele é o primeiro, segundo, etc
 var move = true
@@ -19,11 +20,28 @@ const HOME_POSITION = Vector2(-2300,2300)
 func _ready():
 	parent = get_parent() #"parent" aqui é o parent node (que é o main por enquanto) e não o pc
 	pc = parent.get_child(0)
+	sprite = self.get_node("Sprite2D")
 	
 	#fiz isso porque os filhos spawnados não tavam achando o GameManager do jeito que tava
 	owner = get_parent().owner  
+	
 	game_manager = %GameManager
 
+func animation_logic():
+	var direction_angle = direction.angle()
+			
+	if (cos(direction_angle) > (PI/4)):
+		sprite.animation = "right_dash" 
+	elif (cos(direction_angle) < (-PI/4)):
+		sprite.animation = "left_dash" 
+	elif (sin(direction_angle) < 0):
+		sprite.animation = "up_dash" 
+	else: 
+		sprite.animation = "down_dash"
+	
+	
+	
+	
 func _physics_process(_delta):
 	move = pc.move
 	speed = pc.speed
@@ -41,10 +59,11 @@ func _physics_process(_delta):
 			#a ideia é que ele segue um ponto que tá um pouco atrás do filho anterior (ou pc, se for o primeiro filho)
 			#(aqui, parent.get_child(numero-1) é o filho anterior)
 			#eu tentei fazer ele seguir diretamente o filho anterior, mas daí eles se amontoavam
-			direction = (parent.get_child(numero-1).position-(10 + 20*mult_dist)*parent.get_child(numero-1).direction) - position
+			direction = (parent.get_child(numero-1).position-(10 + 10*mult_dist)*parent.get_child(numero-1).direction) - position
 			
 		#
 		direction = direction.normalized()
+		animation_logic()
 		
 		velocity = pc.dad_speed * direction
 		
@@ -54,5 +73,5 @@ func _physics_process(_delta):
 func get_number() -> int:
 	return numero
 
-
-
+func _on_sprite_2d_animation_changed():
+	sprite.play()
