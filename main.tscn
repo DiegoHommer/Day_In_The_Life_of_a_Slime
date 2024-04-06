@@ -65,8 +65,10 @@ position = Vector2(0, -2710)
 rotation = 1.5708
 
 [node name="UI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
 [node name="Panel" type="Panel" parent="UI"]
+visible = false
 offset_left = 28.0
 offset_top = 25.0
 offset_right = 191.0
@@ -85,6 +87,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Panel2" type="Panel" parent="UI"]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -109,6 +112,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Panel3" type="Panel" parent="UI"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -124,10 +128,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 921.0
-offset_top = -37.0
-offset_right = 921.0
-offset_bottom = -34.0
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 2.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
@@ -171,5 +175,43 @@ one_shot = true
 wait_time = 90.0
 one_shot = true
 
+[node name="Panel4" type="Panel" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -805.0
+offset_top = 212.0
+offset_right = -365.0
+offset_bottom = 434.0
+grow_horizontal = 0
+
+[node name="QtdFilhosHome2" type="Label" parent="UI/Panel4"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Você retornou com nenhum filho para casa!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="UI/Panel4"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 149.0
+offset_right = 281.0
+offset_bottom = 191.0
+text = "MENU"
+
 [connection signal="timeout" from="UI/DiaTimer/Panel3/TempoDia" to="UI/DiaTimer" method="_on_tempo_dia_timeout"]
 [connection signal="timeout" from="UI/DiaTimer/Panel3/VoltaCasa" to="gerador_do_heatmap" method="_on_volta_casa_timeout"]
+[connection signal="pressed" from="UI/Panel4/Button" to="gerador_do_heatmap" method="_on_button_pressed"]

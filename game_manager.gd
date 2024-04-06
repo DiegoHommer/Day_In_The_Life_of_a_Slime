@@ -3,6 +3,7 @@ extends Node
 @onready var qtd_filhos = %QtdFilhos
 @onready var qtd_lixo = %QtdLixo
 @onready var qtd_filhos_home = %QtdFilhosHome
+@onready var qtd_filhos_home_2 = %QtdFilhosHome2
 
 
 var trash = 0
@@ -77,5 +78,7 @@ func att_home(aumentou):
 		filhos_in_casa += 1
 	else:
 		filhos_in_casa -= 1
+	print(filhos_in_casa)
 	
 	qtd_filhos_home.text = "casa: " + str(filhos_in_casa)
+	qtd_filhos_home_2.text = "Você retornou com " + str(filhos_in_casa) + " filhos para casa!"

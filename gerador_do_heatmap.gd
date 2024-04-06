@@ -1,13 +1,13 @@
 extends Node
 
 const HEATMAP_SIZE = 16
-const DIFICULDADE = 2
-const TOTAL_LIXO = 120
-const TOTAL_ARVORES = 40
-const TOTAL_INIMIGOS = DIFICULDADE * 5
-const TOTAL_ARQUEIROS = DIFICULDADE
-const TREE_SPRITES = "res://assets/world/trees/tree"
-const TRASH_SPRITES = "res://assets/world/trash/trash"
+var TOTAL_LIXO = 0
+var TOTAL_ARVORES = 0
+var DIFICULDADE = 4
+var TOTAL_INIMIGOS = 0
+var TOTAL_ARQUEIROS = 0
+const TREE_SPRITES = "res://Assets/world/trees/tree"
+const TRASH_SPRITES = "res://Assets/world/trash/trash"
 var lixo_scene = preload("res://scenes/world/trash.tscn")
 var area_scene = preload("res://scenes/world/areas_mapa.tscn")
 var arvore_scene = preload("res://scenes/world/tree.tscn")
@@ -24,6 +24,11 @@ var lista_inimigos = []
 var trash = 0
 
 func _ready():
+	TOTAL_LIXO = 30 * DIFICULDADE
+	TOTAL_ARVORES = (60 / DIFICULDADE) + 10 
+	TOTAL_INIMIGOS = DIFICULDADE * 3
+	TOTAL_ARQUEIROS = DIFICULDADE
+	
 	for i in HEATMAP_SIZE:
 		for j in HEATMAP_SIZE:
 			areas.append([])
@@ -150,7 +155,7 @@ func gerar_arvores():
 		var rand_x = randi_range(0,HEATMAP_SIZE - 1)
 		var rand_y = randi_range(0,HEATMAP_SIZE - 1)
 		#se a posição for verde e não for no canto da escola, ele cria uma árvore
-		if areas[rand_x][rand_y].level == 0 and not (rand_x > HEATMAP_SIZE - 5 and rand_y < 5) and not (rand_x < 5 and rand_y > HEATMAP_SIZE - 5):
+		if areas[rand_x][rand_y].level == 0 and not (rand_x > HEATMAP_SIZE - 4 and rand_y < 4) and not (rand_x < 4 and rand_y > HEATMAP_SIZE - 4):
 			var sorteio
 			if (randi_range(1,2) == 1):
 				arvore = arvore_scene.instantiate()
@@ -229,3 +234,7 @@ func gerar_inimigos():
 
 func _on_volta_casa_timeout():
 	end_game_sound.play()
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/menu_all/menu_all.tscn")
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

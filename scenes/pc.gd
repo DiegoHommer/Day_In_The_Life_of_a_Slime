@@ -5,6 +5,7 @@ const BASE_SPEED = 450
 #quão mais rápido é com o dash
 const SPEED_MULTIPLIER = 2.5
 @export var speed = BASE_SPEED
+
 var move = true
 var direction = Vector2(0,0)
 #variável para dizer se acabou de fazer um filho (não se possui filhos atualmente) 
@@ -39,8 +40,9 @@ const MAX_TAMANHO = 9
 var filho_scene = preload("res://scenes/filho.tscn")
 #quantos filhos ele tem com ele
 var filho_count = 0
-const LIXO_POR_FILHO = 1
+const LIXO_POR_FILHO = 3
 var parent = ""
+var UI = ""
 var dash_sound = ""
 var child_spawn_sound = ""
 var tempo = 0
@@ -60,6 +62,7 @@ func _ready():
 	parent = get_parent() 
 	dash_sound = self.get_node("SFX/Dash")
 	child_spawn_sound = self.get_node("SFX/SpawnChild")
+	UI = parent.get_parent().get_node("UI")
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	
 
@@ -73,7 +76,7 @@ func _physics_process(_delta):
 #se apertar esc, ir para menu
 	if Input.is_action_just_pressed("ir_para_menu"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/menu_all/menu_all.tscn")
 	
 #coisas do controle---------------------------------------------------------------------------------------
 	if Input.get_last_mouse_velocity().length() > 0.1:
@@ -298,4 +301,8 @@ func _on_theme_finished():
 	
 # acaba jogo e volta para main menu
 func _on_end_game_finished():
-	get_tree().change_scene_to_file("res://scenes/menu_all/menu_all.tscn")
+	UI.get_child(0).visible = false
+	UI.get_child(1).visible = false
+	UI.get_child(2).visible = false
+	UI.get_child(3).get_child(0).visible = false
+	UI.get_child(4).visible = true
