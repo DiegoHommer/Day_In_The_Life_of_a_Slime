@@ -39,7 +39,7 @@ const MAX_TAMANHO = 9
 var filho_scene = preload("res://scenes/filho.tscn")
 #quantos filhos ele tem com ele
 var filho_count = 0
-const LIXO_POR_FILHO = 5
+const LIXO_POR_FILHO = 1
 var parent = ""
 var tempo = 0
 
@@ -48,6 +48,9 @@ var tempo = 0
 
 #animation--------------------------------------------------------------------------
 @onready var animationPlayer = $AnimationPlayer
+var tamanho_aux = 0
+#@onready var animationTree = $AnimationTree
+#@onready var animationState = animationTree.get("parameters/playback")
 
 func _ready():
 	position = Vector2(-2000,2000)
@@ -60,7 +63,6 @@ func _ready():
 func _physics_process(_delta):
 
 	speed = BASE_SPEED
-
 
 	#speed = BASE_SPEED/(escala**SLOW_DOWN) #muda a velocidade pelo tamanho
 	
@@ -89,13 +91,14 @@ func _physics_process(_delta):
 		if Vector2(direction_x, direction_y).length() != 0:
 			cursor.position = 150*Vector2(direction_x, direction_y).normalized() 
 #fim coisas do controle---------------------------------------------------------------------------------------	
+
+	#animationTree.set("parameters/Idle1/blend_position", direction)
+	#animationTree.set("parameters/Walk1/blend_position", direction)
 	
-	#chamando movimentação e seleção da animação
 	if move:
 		move_and_slide()
-		animationPlayer.play("walk_right_size1")
-	else:
-		animationPlayer.play("idle_right_size1")
+
+		
 			
 	# input de dar o dash e fazer filho, 
 	# só pode ser acionado se tiver filho o suficiente e não está colocando filhos na escola nem em casa
@@ -111,12 +114,27 @@ func _on_timer_timeout():
 	if control_mode == 0:
 		direction = get_global_mouse_position() - position
 	else:
-	#coisas controle
+	#acima coisas controle
 		if Vector2(direction_x, direction_y).length() != 0:
 			direction = Vector2(direction_x, direction_y)
 			
 	direction = direction.normalized()
 	
+	
+	#Animação---------------------------------------------------------------------------------
+	tamanho_aux = tamanho + 1
+	
+	var name_aux = ""
+	if move:
+		if is_dad == false:
+			name_aux = "walk_" + get_direction(direction) + "_size" + str(tamanho_aux)
+			animation(name_aux)
+		else:
+			name_aux = "slide_" + get_direction(direction) + "_size" + str(tamanho_aux)
+			animation(name_aux)
+	else:
+		name_aux = "idle_" + get_direction(direction) + "_size" + str(tamanho_aux)
+		animation(name_aux)
 	
 	#parte do dash, dad_speed serve para os filhos saberem qual a speed atual do pai
 	if move:
@@ -141,6 +159,23 @@ func _on_timer_timeout():
 	if game_manager.leaving_school:
 		leaving_school()
 
+func get_direction(my_direction) -> String:
+	var angle = my_direction.angle()
+	angle = rad_to_deg(angle)
+	#print("angle: " + str(angle))
+	if angle >= 135 or angle <= -135:
+		return "left"
+	elif angle >= 45 and angle <= 135:
+		return "down"
+	elif angle >= -45 and angle <= 45:
+		return "right"
+	elif angle >= -135 and angle <= -45:
+		return "up"
+	else:
+		return "down" # This will be returned if the angle is not in any of the specified ranges
+
+func animation(nome_animation):
+	animationPlayer.play(nome_animation)
 
 func leaving_school():
 	while tamanho <= MAX_TAMANHO and game_manager.filhos_in_school >= 1:
