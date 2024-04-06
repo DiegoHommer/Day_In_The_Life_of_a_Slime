@@ -1,7 +1,7 @@
 extends Area2D
 
 var level = 0
-const FLOOR_SPRITES = "res://assets/world/floor/"
+const FLOOR_SPRITES = "res://Assets/world/floor/"
 @onready var area = get_child(0)
 @onready var floor_sprite_path = self.get_node("Sprite2D")
 var color = Color()
