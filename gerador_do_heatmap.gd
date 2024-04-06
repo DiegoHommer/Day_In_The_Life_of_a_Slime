@@ -149,7 +149,7 @@ func gerar_arvores():
 		var rand_x = randi_range(0,HEATMAP_SIZE - 1)
 		var rand_y = randi_range(0,HEATMAP_SIZE - 1)
 		#se a posição for verde e não for no canto da escola, ele cria uma árvore
-		if areas[rand_x][rand_y].level == 0 and not (rand_x > HEATMAP_SIZE - 3 and rand_y < 3) and not (rand_x < 3 and rand_y > HEATMAP_SIZE - 3):
+		if areas[rand_x][rand_y].level == 0 and not (rand_x > HEATMAP_SIZE - 5 and rand_y < 5) and not (rand_x < 5 and rand_y > HEATMAP_SIZE - 5):
 			var sorteio
 			if (randi_range(1,2) == 1):
 				arvore = arvore_scene.instantiate()
