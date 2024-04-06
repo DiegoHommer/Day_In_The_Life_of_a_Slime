@@ -25,7 +25,6 @@ func _ready():
 	game_manager = owner.get_node("GameManager")
 	pc = owner.get_node("Familia/PC")
 	immunity_timer = owner.get_node("Familia/PC/ImmunityTimer")
-	player_sprite = owner.get_node("Familia/PC/AnimatedSprite2D")
 	heatmap = owner.get_node("gerador_do_heatmap")
 	if (enemy_type == "Warrior"):
 		enemy_sprite = self.get_node("WarriorSprite")
@@ -69,10 +68,14 @@ func warrior_movement():
 					
 	#a cada 0.5 segundo ele muda entre parado e se mexendo (move = false ou move = true), e decide na direção
 	move = not move
+	
 
 func archer_movement():
 	if (chase):
-		velocity = Vector2(0,0)
+		# Persegue o player pegando sua posição
+		var distance = pc.global_position - self.global_position
+		distance = distance.normalized()
+		velocity = distance
 	else:
 		# 50% de chance de...
 		if (randf() >= 0):
@@ -101,8 +104,7 @@ func archer_movement():
 	move = not move
 	
 	
-func animation_logic():
-	var distance = pc.global_position - self.global_position
+func animation_logic(distance):
 	var direction_angle = distance.normalized().angle()
 	var is_angry = "normal"
 	
@@ -125,7 +127,7 @@ func _on_dash_timer_timeout():
 		"Warrior": warrior_movement()
 		"Archer": archer_movement()
 		_: print("Tipo de inimigo inexistente")
-	animation_logic()
+	animation_logic(velocity)
 
 func _physics_process(_delta):
 	if (move):
@@ -156,16 +158,15 @@ func _on_area_2d_body_entered(body):
 				attack()
 				
 		# Se o filho entra em contato com o inimigo, filho e todos os irmãos que estão seguindo ele são deletados
-		elif(body.name.contains("Filho")):
+		elif(body.name.contains("Filho") and (not body.dead)):
 			var mortos = 1
 			for brother in body.parent.get_children():
-				if(brother.name != "PC"):
+				if(brother.name != "PC" and (not brother.dead)):
 					if (brother.get_number() > body.get_number()):
 						mortos += 1
-						body.parent.remove_child(brother)
-						brother.queue_free() 
+						brother.die()
 			pc.subtrair_filho_count(mortos)
-			body.queue_free()
+			body.die()
 
 
 # Função para quando player/filho entra na visão do inimigo
@@ -176,8 +177,7 @@ func _on_vision_body_entered(body):
 		if (bodies_inside == 1 and enemy_type == "Archer"):
 			spotted = true
 			enemy_sprite.animation = "spotted"
-	
-			
+
 
 
 # Função para quando player/filho sai da visão do inimigo

@@ -47,7 +47,7 @@ var tempo = 0
 @onready var game_manager = %GameManager
 
 #animation--------------------------------------------------------------------------
-@onready var animationPlayer = $AnimationPlayer
+@onready var animationPlayer = self.get_node("AnimationPlayer")
 var tamanho_aux = 0
 #@onready var animationTree = $AnimationTree
 #@onready var animationState = animationTree.get("parameters/playback")
@@ -124,8 +124,10 @@ func _on_timer_timeout():
 	#Animação---------------------------------------------------------------------------------
 
 	tamanho_aux = tamanho + 1
-	if tamanho_aux == 11:
+
+	if tamanho_aux >= 11:
 		tamanho_aux = 10
+	
 	var name_aux = ""
 	if move:
 		if is_dad == false:
@@ -160,6 +162,10 @@ func _on_timer_timeout():
 	#se está saindo da escola
 	if game_manager.leaving_school:
 		leaving_school()
+		
+	for child in parent.get_children():
+		if child.get_name() != "PC":
+			child.animation_logic()
 
 func get_direction(my_direction) -> String:
 	var angle = my_direction.angle()
@@ -213,9 +219,6 @@ func change_size(aumenta):
 		var quanto_diminuir = tam_antigo - tam_deveria
 		escala = max(round(10*(escala - SIZE_CHANGE*quanto_diminuir))/10,1)
 		tamanho -= quanto_diminuir
-		
-	$AnimatedSprite2D.scale.x = escala
-	$AnimatedSprite2D.scale.y = escala
 
 
 func fazer_filho():
@@ -274,4 +277,6 @@ func zerar_filho_count():
 
 func subtrair_filho_count(mortos):
 	filho_count -= mortos
+	if (filho_count < 0):
+		zerar_filho_count()
 	print(filho_count)

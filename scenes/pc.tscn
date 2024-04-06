@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://d3imt2s6ikkdj"]
+[gd_scene load_steps=127 format=3 uid="uid://d3imt2s6ikkdj"]
 
 [ext_resource type="Script" path="res://scenes/pc.gd" id="1_rbhyv"]
 [ext_resource type="AudioStream" uid="uid://cimue4q10b843" path="res://Audio/slime.ogg" id="2_04vth"]
@@ -6,40 +6,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odcxp"]
 size = Vector2(49.0978, 58.3129)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ak2f6"]
-atlas = ExtResource("2_44yre")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bio6h"]
-atlas = ExtResource("2_44yre")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j5ea3"]
-atlas = ExtResource("2_44yre")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_uvebk"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"down_dash",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ak2f6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bio6h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j5ea3")
-}],
-"loop": true,
-"name": &"down_walk",
-"speed": 5.0
-}]
 
 [sub_resource type="Animation" id="Animation_dfqw2"]
 length = 0.001
@@ -1929,15 +1895,6 @@ script = ExtResource("1_rbhyv")
 [node name="Collision" type="CollisionShape2D" parent="."]
 scale = Vector2(2, 1.5)
 shape = SubResource("RectangleShape2D_odcxp")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
-texture_filter = 1
-position = Vector2(0.996909, -22)
-scale = Vector2(8, 8)
-sprite_frames = SubResource("SpriteFrames_uvebk")
-animation = &"down_walk"
-autoplay = "down_walk"
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.5

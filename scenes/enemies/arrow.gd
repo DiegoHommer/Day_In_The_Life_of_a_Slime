@@ -44,16 +44,15 @@ func _on_hitbox_body_entered(body):
 			attack()
 			
 	# Se o filho entra em contato com o inimigo, filho e todos os irmãos que estão seguindo ele são deletados
-	elif(body.name.contains("Filho")):
+	elif(body.name.contains("Filho") and (not body.dead)):
 		var mortos = 1
 		for brother in body.parent.get_children():
-			if(brother.name != "PC"):
+			if(brother.name != "PC" and (not brother.dead)):
 				if (brother.get_number() > body.get_number()):
 					mortos += 1
-					body.parent.remove_child(brother)
-					brother.queue_free() 
+					brother.die()
 		pc.subtrair_filho_count(mortos)
-		body.queue_free()
+		body.die()
 	
 	elif (body.name != "Enemy"):
 		queue_free()
