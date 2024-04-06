@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwy4qpmg2fk1y"]
+
+[ext_resource type="Script" path="res://scenes/menu_all/menu_all.gd" id="1_1fxoy"]
+[ext_resource type="PackedScene" uid="uid://bk4pnm8a2pjon" path="res://scenes/menu_all/main_menu.tscn" id="1_1q0o0"]
+[ext_resource type="AudioStream" uid="uid://c15jj1sfnphgm" path="res://Assets/Audio/music/slimemenu.ogg" id="2_a341y"]
+[ext_resource type="AudioStream" uid="uid://djvkjltodo5w6" path="res://Assets/Audio/UI/menuY.ogg" id="3_g4fy2"]
+[ext_resource type="AudioStream" uid="uid://cy31rom4anb84" path="res://Assets/Audio/UI/menuN.ogg" id="4_2ct8k"]
+
+[node name="MenuAll" type="Node2D"]
+script = ExtResource("1_1fxoy")
+
+[node name="MenuTheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_a341y")
+volume_db = -1.0
+autoplay = true
+
+[node name="ForwardUI" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_g4fy2")
+volume_db = 12.0
+max_polyphony = 3
+
+[node name="BackUI" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_2ct8k")
+volume_db = 12.0
+max_polyphony = 3
+
+[node name="MainMenu" parent="." instance=ExtResource("1_1q0o0")]
+
+[connection signal="finished" from="MenuTheme" to="." method="_on_menu_theme_finished"]

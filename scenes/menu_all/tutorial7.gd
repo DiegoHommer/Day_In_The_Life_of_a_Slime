@@ -1,10 +1,20 @@
 extends Node
 
-
+@onready var parent = get_parent()
+@onready var backUI = parent.get_node("BackUI")
+@onready var forwardUI = parent.get_node("ForwardUI")
+@onready var main_menu_scene = load("res://scenes/menu_all/main_menu.tscn")
+var new_scene = ""
 
 func _on_next_pressed():
-	get_tree().change_scene_to_file("res://scenes/menu_all/main_menu.tscn")
+	parent.remove_child(parent.get_child(3))
+	new_scene = main_menu_scene.instantiate()
+	parent.add_child(new_scene)
+	forwardUI.play()
 
 
 func _on_menu_pressed():
-	get_tree().change_scene_to_file("res://scenes/menu_all/main_menu.tscn")
+	parent.remove_child(parent.get_child(3))
+	new_scene = main_menu_scene.instantiate()
+	parent.add_child(new_scene)
+	backUI.play()
