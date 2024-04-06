@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cahwoftebo0t0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_futea"]
+size = Vector2(304, 5226)
+
+[node name="Paredao" type="StaticBody2D"]
+collision_mask = 0
+
+[node name="Area2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 7)
+shape = SubResource("RectangleShape2D_futea")

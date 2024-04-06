@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1m8shg88v0qt"]
+[gd_scene load_steps=12 format=3 uid="uid://c1m8shg88v0qt"]
 
 [ext_resource type="PackedScene" uid="uid://d3imt2s6ikkdj" path="res://scenes/pc.tscn" id="1_gekrl"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_le7ab"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Camera2D.gd" id="6_fedkr"]
 [ext_resource type="Script" path="res://DiaTimer.gd" id="7_hi8dc"]
 [ext_resource type="Script" path="res://gerador_do_heatmap.gd" id="8_p2y4t"]
+[ext_resource type="PackedScene" uid="uid://cahwoftebo0t0" path="res://scenes/world/paredao.tscn" id="9_067wt"]
 
 [sub_resource type="Theme" id="Theme_qo2e7"]
 
@@ -47,6 +48,20 @@ script = ExtResource("1_le7ab")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("6_fedkr")
+
+[node name="Paredao_esquerda" parent="." instance=ExtResource("9_067wt")]
+position = Vector2(-2710, 0)
+
+[node name="Paredao_direita" parent="." instance=ExtResource("9_067wt")]
+position = Vector2(2710, 0)
+
+[node name="Paredao_baixo" parent="." instance=ExtResource("9_067wt")]
+position = Vector2(0, 2710)
+rotation = 1.5708
+
+[node name="Paredao_cima" parent="." instance=ExtResource("9_067wt")]
+position = Vector2(0, -2710)
+rotation = 1.5708
 
 [node name="UI" type="CanvasLayer" parent="."]
 

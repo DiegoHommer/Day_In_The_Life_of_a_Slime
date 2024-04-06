@@ -4,7 +4,6 @@
 size = Vector2(20, 14.526)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aufon"]
-load_path = "res://.godot/imported/tree11.png-9cea58265d1421bb31091538a739d290.ctex"
 
 [node name="Obstacle" type="StaticBody2D"]
 collision_mask = 0
