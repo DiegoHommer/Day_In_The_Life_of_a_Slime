@@ -15,6 +15,9 @@ var move = true
 var chase = false
 var spotted = false
 var shooting = false
+var arrow_shoot = ""
+var sword_hit = ""
+var glare = ""
 var enemy_type = "Warrior"
 var enemy_sprite = "WarriorSprite"
 var arrow_scene = preload("res://scenes/enemies/arrow.tscn")
@@ -24,6 +27,9 @@ func _ready():
 		owner = get_parent().owner
 	game_manager = owner.get_node("GameManager")
 	pc = owner.get_node("Familia/PC")
+	arrow_shoot = pc.get_node("SFX/ArrowShoot")
+	sword_hit = pc.get_node("SFX/Swordhit")
+	glare = pc.get_node("SFX/Glare")
 	immunity_timer = owner.get_node("Familia/PC/ImmunityTimer")
 	heatmap = owner.get_node("gerador_do_heatmap")
 	if (enemy_type == "Warrior"):
@@ -140,6 +146,7 @@ func shoot():
 	distance = distance.normalized()
 	arrow.new_arrow(distance, self.position)
 	owner.call_deferred("add_child", arrow)
+	arrow_shoot.play()
 
 # Função de ataque contra o player
 func attack():
@@ -156,6 +163,7 @@ func _on_area_2d_body_entered(body):
 		if (body.name == "PC"):
 			if (immunity_timer.is_stopped()):
 				attack()
+				sword_hit.play()
 				
 		# Se o filho entra em contato com o inimigo, filho e todos os irmãos que estão seguindo ele são deletados
 		elif(body.name.contains("Filho") and (not body.dead)):
@@ -177,6 +185,7 @@ func _on_vision_body_entered(body):
 		if (bodies_inside == 1 and enemy_type == "Archer"):
 			spotted = true
 			enemy_sprite.animation = "spotted"
+			glare.play()
 
 
 

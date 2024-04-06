@@ -4,6 +4,7 @@ extends Area2D
 @onready var qtd_filhos = %QtdFilhos
 @onready var game_manager = %GameManager
 @onready var dia_timer = $"../UI/DiaTimer"
+@onready var school_enter_sound = self.get_node("School")
 
 
 var aux_num_filho = 0
@@ -37,6 +38,7 @@ func _on_body_entered(body):
 			pc.filho_count -= 1
 			#atualiza no game_manager
 			game_manager.att_school(true) #verdadeiro pq tá aumentando
+			school_enter_sound.play()
 			
 			#quando todos os filhos do player forem para escola, pode fazer filhos normal
 			if pc.filho_count == 0:

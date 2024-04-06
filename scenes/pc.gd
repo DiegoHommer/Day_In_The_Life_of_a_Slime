@@ -41,6 +41,8 @@ var filho_scene = preload("res://scenes/filho.tscn")
 var filho_count = 0
 const LIXO_POR_FILHO = 1
 var parent = ""
+var dash_sound = ""
+var child_spawn_sound = ""
 var tempo = 0
 
 #lixo-------------------------------------------------------------------------------
@@ -56,6 +58,8 @@ func _ready():
 	position = Vector2(-2000,2000)
 	
 	parent = get_parent() 
+	dash_sound = self.get_node("SFX/Dash")
+	child_spawn_sound = self.get_node("SFX/SpawnChild")
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	
 
@@ -104,6 +108,8 @@ func _physics_process(_delta):
 	# só pode ser acionado se tiver filho o suficiente e não está colocando filhos na escola nem em casa
 	if Input.is_action_just_pressed("dash_filho") and game_manager.get_trash() >= LIXO_POR_FILHO and game_manager.going_school == false and game_manager.going_home == false:
 		fazer_filho()
+		child_spawn_sound.play()
+
 
 		
 
@@ -139,6 +145,7 @@ func _on_timer_timeout():
 		else:
 			name_aux = "slide_" + get_direction(direction) + "_size" + str(tamanho_aux)
 			animation(name_aux)
+			dash_sound.play()
 	else:
 		name_aux = "idle_" + get_direction(direction) + "_size" + str(tamanho_aux)
 		animation(name_aux)
@@ -285,10 +292,10 @@ func subtrair_filho_count(mortos):
 	print(filho_count)
 
 @onready var theme = self.get_node("Theme")
-@onready var menu_theme = self.get_node("MenuTheme")
 
 func _on_theme_finished():
 	theme.play()
-
-func _on_menu_theme_finished():
-	menu_theme.play()
+	
+# acaba jogo e volta para main menu
+func _on_end_game_finished():
+	get_tree().change_scene_to_file("res://scenes/menu_all/menu_all.tscn")

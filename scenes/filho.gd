@@ -14,6 +14,7 @@ var being_born = true
 var direction = Vector2(0,0)
 var escala = 1
 var mult_dist = 1
+var death_sound = ""
 
 const SCHOOL_POSITION = Vector2(2000, -2000)
 #const SCHOOL_POSITION = Vector2(-1600,2000)
@@ -28,12 +29,14 @@ func _ready():
 	game_manager = %GameManager
 	sprite.animation = "birth"
 	sprite.play()
+	death_sound = parent.get_node("PC/SFX/DeathChild")
 	
 
 func die():
 	sprite.animation = "death"
 	sprite.play()
 	dead = true
+	death_sound.play()
 
 func animation_logic():
 	if ((not dead) and (not being_born)):

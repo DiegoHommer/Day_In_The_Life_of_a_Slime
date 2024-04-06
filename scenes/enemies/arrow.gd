@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 400
 var direction = ""
 var pc = ""
+var arrow_hit = ""
 var immunity_timer = ""
 var player_sprite = ""
 var game_manager = ""
@@ -12,6 +13,7 @@ func _ready():
 	var parent = get_parent()
 	game_manager = parent.get_node("GameManager")
 	pc = parent.get_node("Familia/PC")
+	arrow_hit = pc.get_node("SFX/Arrowhit")
 	immunity_timer = parent.get_node("Familia/PC/ImmunityTimer")
 	
 	
@@ -42,6 +44,7 @@ func _on_hitbox_body_entered(body):
 	if (body.name == "PC"):
 		if (immunity_timer.is_stopped()):
 			attack()
+		arrow_hit.play()
 			
 	# Se o filho entra em contato com o inimigo, filho e todos os irmãos que estão seguindo ele são deletados
 	elif(body.name.contains("Filho") and (not body.dead)):

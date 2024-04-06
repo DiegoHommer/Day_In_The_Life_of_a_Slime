@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://7xnnhbq4qci0"]
 
 [ext_resource type="Script" path="res://scenes/world/trash.gd" id="1_x6lr5"]
-[ext_resource type="Texture2D" uid="uid://4f6oletejp55" path="res://assets/world/trash/trash2.png" id="2_dv20w"]
+[ext_resource type="Texture2D" uid="uid://4f6oletejp55" path="res://Assets/world/trash/trash2.png" id="2_dv20w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g0165"]
 

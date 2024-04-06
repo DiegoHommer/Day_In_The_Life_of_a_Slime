@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://3c4wokfy6mt4"]
+[gd_scene load_steps=5 format=3 uid="uid://3c4wokfy6mt4"]
 
 [ext_resource type="Script" path="res://scenes/world/escola.gd" id="1_1aksx"]
 [ext_resource type="Texture2D" uid="uid://b0fcyev6bjxmy" path="res://Assets/world/school.png" id="2_ygtwg"]
+[ext_resource type="AudioStream" uid="uid://csrf2ais2727d" path="res://Assets/Audio/SFX/school.ogg" id="3_kv0ja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hnxb"]
 size = Vector2(395, 245)
@@ -19,5 +20,9 @@ z_index = 1
 texture_filter = 1
 scale = Vector2(8, 8)
 texture = ExtResource("2_ygtwg")
+
+[node name="School" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_kv0ja")
+max_polyphony = 20
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2ef43vap32qv"]
 
 [ext_resource type="Script" path="res://scenes/world/casa.gd" id="1_87ig3"]
-[ext_resource type="Texture2D" uid="uid://dnvv7dvlh2283" path="res://assets/world/house.png" id="2_duprh"]
+[ext_resource type="Texture2D" uid="uid://dnvv7dvlh2283" path="res://Assets/world/house.png" id="2_duprh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s61xk"]
 size = Vector2(293.851, 351.907)

@@ -171,3 +171,4 @@ wait_time = 90.0
 one_shot = true
 
 [connection signal="timeout" from="UI/DiaTimer/Panel3/TempoDia" to="UI/DiaTimer" method="_on_tempo_dia_timeout"]
+[connection signal="timeout" from="UI/DiaTimer/Panel3/VoltaCasa" to="gerador_do_heatmap" method="_on_volta_casa_timeout"]
