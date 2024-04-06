@@ -38,7 +38,7 @@ func animation_logic():
 		sprite.animation = "up_dash" 
 	else: 
 		sprite.animation = "down_dash"
-	
+
 	
 	
 	
@@ -59,7 +59,7 @@ func _physics_process(_delta):
 			#a ideia é que ele segue um ponto que tá um pouco atrás do filho anterior (ou pc, se for o primeiro filho)
 			#(aqui, parent.get_child(numero-1) é o filho anterior)
 			#eu tentei fazer ele seguir diretamente o filho anterior, mas daí eles se amontoavam
-			direction = (parent.get_child(numero-1).position-(10 + 10*mult_dist)*parent.get_child(numero-1).direction) - position
+			direction = (parent.get_child(numero-1).position-(5 + 20*mult_dist)*parent.get_child(numero-1).direction) - position
 			
 		#
 		direction = direction.normalized()

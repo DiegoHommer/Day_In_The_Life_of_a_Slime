@@ -293,4 +293,6 @@ scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_snylp")
 animation = &"death"
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="animation_changed" from="Sprite2D" to="." method="_on_sprite_2d_animation_changed"]
