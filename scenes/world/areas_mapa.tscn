@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ds8vhrfb2c1cv"]
+[gd_scene load_steps=4 format=3 uid="uid://ds8vhrfb2c1cv"]
 
 [ext_resource type="Script" path="res://areas_mapa.gd" id="1_g0ryi"]
 [ext_resource type="Script" path="res://scenes/Polygon2D.gd" id="2_aroq4"]
+[ext_resource type="Texture2D" uid="uid://d0bkx4b7qjj3h" path="res://assets/world/floor/amarelo1.png" id="3_wkxyg"]
 
 [node name="Node2D" type="Area2D"]
 script = ExtResource("1_g0ryi")
@@ -12,3 +13,9 @@ script = ExtResource("2_aroq4")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, 0, 320, 0, 320, 320, 0, 320)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(160, 160)
+scale = Vector2(4, 4)
+texture = ExtResource("3_wkxyg")

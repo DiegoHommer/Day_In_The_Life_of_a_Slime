@@ -5,10 +5,8 @@ var um_lixo = 1
 func _ready():
 	#fiz isso porque os lixos spawnados não tavam achando o GameManager e o PC do jeito que tava
 	owner = get_parent().owner  
-		
-	game_manager = %GameManager
-	pc = %PC
-
+	game_manager = owner.get_node("GameManager")
+	pc = owner.get_node("Familia/PC")
 
 func _on_body_entered(body):
 	# Se o player entra em contato com o lixo, o lixo é absorvido
