@@ -148,11 +148,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TempoDia" type="Timer" parent="UI/DiaTimer/Panel3"]
-wait_time = 210.0
+wait_time = 5.0
 one_shot = true
 
 [node name="VoltaCasa" type="Timer" parent="UI/DiaTimer/Panel3"]
-wait_time = 90.0
+wait_time = 5.0
 one_shot = true
 
 [connection signal="timeout" from="UI/DiaTimer/Panel3/TempoDia" to="UI/DiaTimer" method="_on_tempo_dia_timeout"]
+[connection signal="timeout" from="UI/DiaTimer/Panel3/VoltaCasa" to="gerador_do_heatmap" method="_on_volta_casa_timeout"]

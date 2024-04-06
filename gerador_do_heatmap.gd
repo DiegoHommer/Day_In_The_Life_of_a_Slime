@@ -14,6 +14,7 @@ var arvore_scene = preload("res://scenes/world/tree.tscn")
 var obstacle_scene = preload("res://scenes/world/obstacle.tscn")
 var trash_scene = preload("res://scenes/world/trash.tscn")
 var enemy_scene = preload("res://scenes/enemies/enemy.tscn")
+@onready var end_game_sound = get_parent().get_node("Familia/PC/SFX/EndGame")
 var areas = []
 var quantas_arvores = 0
 var lista_arvores = []
@@ -224,3 +225,7 @@ func gerar_inimigos():
 			quantos_inimigos +=1
 
 
+
+
+func _on_volta_casa_timeout():
+	end_game_sound.play()
