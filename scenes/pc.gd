@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 #movimento------------------------------------------------------------------------------
-const BASE_SPEED = 300
+const BASE_SPEED = 450
 #quão mais rápido é com o dash
 const SPEED_MULTIPLIER = 2.5
 @export var speed = BASE_SPEED

@@ -7,7 +7,7 @@ var heatmap = ""
 
 const X = 50
 const Y = 50
-const enemy_velocity = 150
+const enemy_velocity = 300
 const archer_velocity = 800
 var bodies_inside = 0
 var rand_float = 0

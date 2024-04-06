@@ -5,7 +5,7 @@ const DIFICULDADE = 2
 const TOTAL_LIXO = 120
 const TOTAL_ARVORES = 40
 const TOTAL_INIMIGOS = DIFICULDADE * 5
-const TOTAL_ARQUEIROS = 20
+const TOTAL_ARQUEIROS = DIFICULDADE
 const TREE_SPRITES = "res://assets/world/trees/tree"
 const TRASH_SPRITES = "res://assets/world/trash/trash"
 var lixo_scene = preload("res://scenes/world/trash.tscn")
@@ -55,8 +55,8 @@ func _ready():
 			areas[i][HEATMAP_SIZE - 1 - j].level = 0
 			areas[HEATMAP_SIZE - i - 1][j].level = 0
 			
-	for i in 16:
-		for j in  16:
+	for i in HEATMAP_SIZE:
+		for j in  HEATMAP_SIZE:
 			areas[i][j].paint_tile()
 			
 		

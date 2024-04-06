@@ -34,4 +34,4 @@ func _process(_delta):
 	if is_zoomed:
 		zoom = Vector2(0.12,0.12)
 	else:
-		zoom = Vector2(1,1)
+		zoom = Vector2(0.5,0.5)

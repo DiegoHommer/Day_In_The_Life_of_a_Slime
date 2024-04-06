@@ -17,6 +17,7 @@ texture = ExtResource("2_bi4tu")
 
 [node name="scoreboard" type="Button" parent="TextureRect2"]
 show_behind_parent = true
+layout_mode = 0
 offset_left = 851.0
 offset_top = 362.0
 offset_right = 1030.0
@@ -26,6 +27,7 @@ offset_bottom = 521.0
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0, 0, 0, 0)
 show_behind_parent = true
+layout_mode = 0
 offset_left = 1083.0
 offset_top = 578.0
 offset_right = 1157.0
@@ -51,6 +53,7 @@ text = "
 
 [node name="tutorial" type="Button" parent="TextureRect2"]
 show_behind_parent = true
+layout_mode = 0
 offset_left = 595.0
 offset_top = 363.0
 offset_right = 779.0
