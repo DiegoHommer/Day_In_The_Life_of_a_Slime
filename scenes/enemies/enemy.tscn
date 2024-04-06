@@ -1,9 +1,8 @@
 [gd_scene load_steps=77 format=3 uid="uid://j6yhilxiw5aj"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_k3fqa"]
-[ext_resource type="Texture2D" uid="uid://brrhv8ducuj8a" path="res://assets/sprites/warrior.png" id="2_jljsk"]
-[ext_resource type="Texture2D" uid="uid://dxsdfff0rnb1u" path="res://assets/sprites/archer.png" id="3_ters0"]
-
+[ext_resource type="Texture2D" uid="uid://brrhv8ducuj8a" path="res://Assets/sprites/warrior.png" id="2_jljsk"]
+[ext_resource type="Texture2D" uid="uid://dxsdfff0rnb1u" path="res://Assets/sprites/archer.png" id="3_ters0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hv04y"]
 size = Vector2(109, 204)
@@ -40,21 +39,21 @@ region = Rect2(94, 0, 47, 64)
 atlas = ExtResource("2_jljsk")
 region = Rect2(141, 0, 47, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k80ga"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bndvu"]
 atlas = ExtResource("2_jljsk")
-region = Rect2(0, 448, 48, 64)
+region = Rect2(0, 450, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v866x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qghip"]
 atlas = ExtResource("2_jljsk")
-region = Rect2(48, 448, 48, 64)
+region = Rect2(48, 450, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wte1y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vna7"]
 atlas = ExtResource("2_jljsk")
-region = Rect2(96, 448, 48, 64)
+region = Rect2(96, 450, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f4t4r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_apy7n"]
 atlas = ExtResource("2_jljsk")
-region = Rect2(144, 448, 48, 64)
+region = Rect2(144, 450, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dkhte"]
 atlas = ExtResource("2_jljsk")
@@ -174,16 +173,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k80ga")
+"texture": SubResource("AtlasTexture_bndvu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v866x")
+"texture": SubResource("AtlasTexture_qghip")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wte1y")
+"texture": SubResource("AtlasTexture_4vna7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f4t4r")
+"texture": SubResource("AtlasTexture_apy7n")
 }],
 "loop": true,
 "name": &"left_angry",
@@ -595,13 +594,13 @@ unique_name_in_owner = true
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_nq2iv")
-animation = &"up_angry"
+animation = &"left_angry"
 
 [node name="ArcherSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_4hr22")
-animation = &"up_normal"
+animation = &"right_normal"
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 8

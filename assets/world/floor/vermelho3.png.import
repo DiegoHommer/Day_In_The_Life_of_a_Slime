@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3qly014hev7g"
-path="res://.godot/imported/vermelho3.png-4cd72bc94af1233eef8454d4827daac3.ctex"
+path="res://.godot/imported/vermelho3.png-104906a04ece0802824f501ab54679f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/world/floor/vermelho3.png"
-dest_files=["res://.godot/imported/vermelho3.png-4cd72bc94af1233eef8454d4827daac3.ctex"]
+source_file="res://Assets/world/floor/vermelho3.png"
+dest_files=["res://.godot/imported/vermelho3.png-104906a04ece0802824f501ab54679f8.ctex"]
 
 [params]
 
